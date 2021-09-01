@@ -1,3 +1,4 @@
+# Please don't make me make up quizzes and questions) It's very hard for me( and takes a tremendous amount of time(
 ActiveRecord::Base.transaction do
   TakenQuiz.destroy_all
   User.destroy_all
@@ -6,13 +7,16 @@ ActiveRecord::Base.transaction do
   Quiz.destroy_all
   Category.destroy_all
 
+  quizzes = []
+
   5.times do
     category = Category.new(title: Faker::Science.science)
     category.save!
     5.times do |i|
       quiz = Quiz.new(title: Faker::Science.element_subcategory, 
-                      level: i+1, category_id: category.id)
+                      level: i + 1, category_id: category.id)
       quiz.save!
+      quizzes << quiz
 
       5.times do |i|
         question = Question.new(body: Faker::TvShows::SouthPark.quote,
@@ -34,10 +38,8 @@ ActiveRecord::Base.transaction do
   3.times do
     user = User.new(email: Faker::Internet.email)
     user.save!
+    quiz = quizzes.sample
+    taken_quiz = TakenQuiz.new(user: user, quiz: quiz)
+    taken_quiz.save!
   end
-
-  user = User.order(Arel.sql('RANDOM()')).first
-  quiz = Quiz.order(Arel.sql('RANDOM()')).first
-  taken_quiz = TakenQuiz.new(user_id: user.id, quiz_id: quiz.id)
-  taken_quiz.save
 end
