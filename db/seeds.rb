@@ -7,16 +7,17 @@ ActiveRecord::Base.transaction do
   Quiz.destroy_all
   Category.destroy_all
 
+  categories = %w[English Welsh American]
+  quiz_titles = %w[Grammar Phonetic Listening]
   quizzes = []
   users = []
+  questions = []
 
   3.times do
     user = User.new(email: Faker::Internet.email)
     user.save!
     users << user
   end
-  categories = %w[English Welsh American]
-  quiz_titles = %w[Grammar Phonetic Listening]
 
   categories.each do |title|
     category = Category.new(title: title)
@@ -31,16 +32,14 @@ ActiveRecord::Base.transaction do
     end
   end
 
-  Quiz.all.each do |quiz|
-    questions = []
-    5.times { questions << Faker::Science.modifier }
+  quizzes.each do |quiz|
+    5.times { questions << "#{Faker::Science.modifier}" }
     questions.each do |q|
-      Question.create(body: q, quiz: quiz)
+      questions << Question.create(body: q, quiz: quiz)
     end
   end
 
-  Question.all.each do |question|
-    answers = []
+  questions.each do |question|
     4.times { answers << Faker::Lorem.sentence }
 
     answers.each { |answer| Answer.create(body: answer, question: question) }
