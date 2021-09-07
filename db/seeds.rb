@@ -15,34 +15,35 @@ ActiveRecord::Base.transaction do
     user.save!
     users << user
   end
+  categories = %w[English Welsh American]
+  quiz_titles = %w[Grammar Phonetic Listening]
 
-  5.times do
-    category = Category.new(title: Faker::Science.science)
+  categories.each do |title|
+    category = Category.new(title: title)
     category.save!
-    5.times do |i|
-      quiz = Quiz.new(title: Faker::Science.element_subcategory,
-                      level: i + 1, category_id: category.id,
+
+    quiz_titles.each_with_index do |qt, i|
+      quiz = Quiz.new(title: qt,
+                      level: i + 1, category: category,
                       creator: users.sample)
       quiz.save!
       quizzes << quiz
-
-      5.times do |i|
-        question = Question.new(body: Faker::TvShows::SouthPark.quote,
-                                quiz_id: quiz.id)
-        question.save!
-
-        2.times do |i|
-          answer = Answer.new(body: Faker::Science.modifier,
-                              question_id: question.id)
-          answer.save!
-        end
-        answer = Answer.new(body: Faker::Science.modifier,
-                            correct: true, question_id: question.id)
-        answer.save!
-        taken_quiz = TakenQuiz.new(user: users.sample, quiz: quizzes.sample)
-        taken_quiz.save!
-      end
     end
   end
 
+  Quiz.all.each do |quiz|
+    questions = []
+    5.times { questions << Faker::Science.modifier }
+    questions.each do |q|
+      Question.create(body: q, quiz: quiz)
+    end
+  end
+
+  Question.all.each do |question|
+    answers = []
+    4.times { answers << Faker::Lorem.sentence }
+
+    answers.each { |answer| Answer.create(body: answer, question: question) }
+    question.answers.sample.update(correct: true)
+  end
 end
