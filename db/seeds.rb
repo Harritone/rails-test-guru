@@ -41,9 +41,10 @@ ActiveRecord::Base.transaction do
     end
   end
 
+  4.times { answers << Faker::Lorem.sentence }
   questions.each do |question|
-    4.times { answers << Faker::Lorem.sentence }
-    answers.each { |answer| Answer.create(body: answer, question: question) }
-    question.answers.sample.update(correct: true)
+    answers.each { |answer| Answer.create(body: answer, question: question, correct: false) }
+    question.answers.sample.update!(correct: true)
+    # question.save!
   end
 end
