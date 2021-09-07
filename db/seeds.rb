@@ -8,13 +8,21 @@ ActiveRecord::Base.transaction do
   Category.destroy_all
 
   quizzes = []
+  users = []
+
+  3.times do
+    user = User.new(email: Faker::Internet.email)
+    user.save!
+    users << user
+  end
 
   5.times do
     category = Category.new(title: Faker::Science.science)
     category.save!
     5.times do |i|
-      quiz = Quiz.new(title: Faker::Science.element_subcategory, 
-                      level: i + 1, category_id: category.id)
+      quiz = Quiz.new(title: Faker::Science.element_subcategory,
+                      level: i + 1, category_id: category.id,
+                      user: users.sample)
       quiz.save!
       quizzes << quiz
 
@@ -31,15 +39,10 @@ ActiveRecord::Base.transaction do
         answer = Answer.new(body: Faker::Science.modifier,
                             correct: true, question_id: question.id)
         answer.save!
+        taken_quiz = TakenQuiz.new(user: users.sample, quiz: quizzes.sample)
+        taken_quiz.save!
       end
     end
   end
 
-  3.times do
-    user = User.new(email: Faker::Internet.email)
-    user.save!
-    quiz = quizzes.sample
-    taken_quiz = TakenQuiz.new(user: user, quiz: quiz)
-    taken_quiz.save!
-  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_01_034705) do
+ActiveRecord::Schema.define(version: 2021_09_03_005936) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 2021_09_01_034705) do
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["category_id"], name: "index_quizzes_on_category_id"
+    t.index ["user_id"], name: "index_quizzes_on_user_id"
   end
 
   create_table "taken_quizzes", force: :cascade do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_09_01_034705) do
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "categories"
+  add_foreign_key "quizzes", "users"
   add_foreign_key "taken_quizzes", "quizzes"
   add_foreign_key "taken_quizzes", "users"
 end
