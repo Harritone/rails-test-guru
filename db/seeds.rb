@@ -12,6 +12,8 @@ ActiveRecord::Base.transaction do
   quizzes = []
   users = []
   questions = []
+  ques_titles = []
+  answers = []
 
   3.times do
     user = User.new(email: Faker::Internet.email)
@@ -33,15 +35,14 @@ ActiveRecord::Base.transaction do
   end
 
   quizzes.each do |quiz|
-    5.times { questions << "#{Faker::Science.modifier}" }
-    questions.each do |q|
-      questions << Question.create(body: q, quiz: quiz)
+    5.times { ques_titles << "#{Faker::Science.modifier}" }
+    ques_titles.uniq.each do |body|
+      questions << Question.create(body: body, quiz: quiz)
     end
   end
 
   questions.each do |question|
     4.times { answers << Faker::Lorem.sentence }
-
     answers.each { |answer| Answer.create(body: answer, question: question) }
     question.answers.sample.update(correct: true)
   end
