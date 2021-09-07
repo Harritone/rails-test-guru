@@ -22,7 +22,7 @@ ActiveRecord::Base.transaction do
     5.times do |i|
       quiz = Quiz.new(title: Faker::Science.element_subcategory,
                       level: i + 1, category_id: category.id,
-                      user: users.sample)
+                      creator: users.sample)
       quiz.save!
       quizzes << quiz
 
