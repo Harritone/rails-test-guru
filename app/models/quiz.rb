@@ -1,6 +1,6 @@
 class Quiz < ApplicationRecord
   belongs_to :category
-  belongs_to :creator, class_name: 'User', foreign_key: :user_id
+  belongs_to :creator, optional: true, class_name: 'User', foreign_key: :creator_id
   has_many :taken_quizzes, dependent: :destroy
   has_many :users, through: :taken_quizzes
 
