@@ -14,9 +14,7 @@ class Quiz < ApplicationRecord
   scope :hard, -> { by_level(5..Float::INFINITY) }
   scope :by_category_title, ->(category) { joins(:category).where(categories: { title: category }) }
 
-  def self.titles_by_category(category)
-    order(title: :desc).joins(:category)
-                       .where('category.title': category)
-                       .pluck(:title)
+  def self.titles_by_category(category_title)
+    by_category_title(category_title).pluck(:title)
   end
 end
