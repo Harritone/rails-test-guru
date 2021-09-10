@@ -1,24 +1,23 @@
-# README
+# Test Guru project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## List of enteties
 
-Things you may want to cover:
+* User
+* Quiz
+* Question
+* Answer
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Development in Docker:
+* To build an image execute:
+    ```console
+        docker build . -t test-guru
+    ```
+* To run application in a container execute:
+    ```console
+        docker run -it -p 3000:3000 -v ${PWD}:/app test-guru
+    ```
+* To run bash in a container execute:
+    ```console
+       docker run -it -v ${PWD}:/app test-guru bash 
+    ```
