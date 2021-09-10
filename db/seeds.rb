@@ -7,8 +7,13 @@ ActiveRecord::Base.transaction do
   Quiz.destroy_all
   Category.destroy_all
 
+  categories = %w[English Welsh American]
+  quiz_titles = %w[Grammar Phonetic Listening]
   quizzes = []
   users = []
+  questions = []
+  ques_titles = []
+  answers = []
 
   3.times do
     user = User.new(email: Faker::Internet.email)
@@ -16,33 +21,30 @@ ActiveRecord::Base.transaction do
     users << user
   end
 
-  5.times do
-    category = Category.new(title: Faker::Science.science)
+  categories.each do |title|
+    category = Category.new(title: title)
     category.save!
-    5.times do |i|
-      quiz = Quiz.new(title: Faker::Science.element_subcategory,
-                      level: i + 1, category_id: category.id,
-                      user: users.sample)
+
+    quiz_titles.each_with_index do |qt, i|
+      quiz = Quiz.new(title: qt,
+                      level: i + 1, category: category,
+                      creator: users.sample)
       quiz.save!
       quizzes << quiz
-
-      5.times do |i|
-        question = Question.new(body: Faker::TvShows::SouthPark.quote,
-                                quiz_id: quiz.id)
-        question.save!
-
-        2.times do |i|
-          answer = Answer.new(body: Faker::Science.modifier,
-                              question_id: question.id)
-          answer.save!
-        end
-        answer = Answer.new(body: Faker::Science.modifier,
-                            correct: true, question_id: question.id)
-        answer.save!
-        taken_quiz = TakenQuiz.new(user: users.sample, quiz: quizzes.sample)
-        taken_quiz.save!
-      end
     end
   end
 
+  quizzes.each do |quiz|
+    5.times { ques_titles << "#{Faker::Science.modifier}" }
+    ques_titles.uniq.each do |body|
+      questions << Question.create(body: body, quiz: quiz)
+    end
+  end
+
+  4.times { answers << Faker::Lorem.sentence }
+  questions.each do |question|
+    answers.each { |answer| Answer.create(body: answer, question: question, correct: false) }
+    question.answers.sample.update!(correct: true)
+    # question.save!
+  end
 end
