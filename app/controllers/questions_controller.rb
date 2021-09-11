@@ -1,41 +1,41 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show destroy]
-  before_action :set_quiz, only: %i[index new]
-  skip_before_action :verify_authenticity_token, only: %i[create destroy]
+  before_action :set_quiz, only: %i[index new create]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
-    @questions = Question.by_quiz(@quiz)
+    @questions = Quiz.find(params[:quiz_id]).questions
     template = <<~HEREDOC
       <h1>List of Questions:</h1>
       <ul>
         <% @questions.each do |question| %>
           <li>
-            <form action="/quizzes/#{@quiz.id}/questions/<%= question.id %>" method="POST">
-              <p><%= question.body %></p>
-              <button type="submit">Delete Question</button>
-            </form>
+            <%= link_to question.body, question_path(question.id) %>
+            <p><%= question.body %></p>
+            <p><%= link_to 'Delete question', question_path(question.id), method: :delete %>
           </li>
         <% end %>
       </ul>
+      <%= link_to 'Add question', new_quiz_question_path %>
     HEREDOC
-    respond_to do |format|
-      format.html { render inline: template }
-      format.json { render json: @questions }
-    end
+
+    render inline: template
   end
 
   def show
-    respond_to do |format|
-      format.html { render inline: '<p><%= @question.body %></p>' }
-      format.json { render json: @question }
-    end
+    quiz = @question.quiz
+    render inline: <<~HEREDOC
+      <%= link_to 'Back', quiz_questions_path(#{quiz.id}) %>
+      <p><%= @question.body %></p>
+    HEREDOC
   end
 
   def new
+    @question = Question.new
     template = <<~HEREDOC
       <h1>Create Question</h1>
       <form action="/quizzes/#{@quiz.id}/questions" method="POST">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <label for="question_body">Question Body<label>
         <textarea name="body" id="question_body" rows="5"></textarea>
         <input type="hidden" value="#{@quiz.id}" name="quiz_id">
@@ -48,12 +48,12 @@ class QuestionsController < ApplicationController
 
   def create
     question = Question.new(question_params)
-    question.save!
+    question.save
     redirect_to quiz_questions_path
   end
 
   def destroy
-    @question.destroy!
+    @question.destroy
     redirect_to quiz_questions_path
   end
 
@@ -64,7 +64,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_question
-    @question = Question.by_quiz(params[:quiz_id]).find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def set_quiz
