@@ -3,6 +3,7 @@ class Quiz < ApplicationRecord
   belongs_to :creator, optional: true, class_name: 'User', foreign_key: :creator_id
   has_many :taken_quizzes, dependent: :destroy
   has_many :users, through: :taken_quizzes
+  has_many :questions
 
   validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
