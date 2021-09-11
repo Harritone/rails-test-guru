@@ -4,5 +4,4 @@ class Question < ApplicationRecord
 
   validates :body, presence: true
 
-  scope :by_quiz, ->(quiz) { where(quiz: quiz) }
 end
