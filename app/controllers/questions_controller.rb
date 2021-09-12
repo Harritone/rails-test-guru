@@ -1,18 +1,17 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show destroy]
-  before_action :set_quiz, only: %i[index new create]
+  before_action :set_quiz, except: %i[show destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
-    @questions = Quiz.find(params[:quiz_id]).questions
+    @questions = @quiz.questions
     template = <<~HEREDOC
       <h1>List of Questions:</h1>
       <ul>
         <% @questions.each do |question| %>
           <li>
             <%= link_to question.body, question_path(question.id) %>
-            <p><%= question.body %></p>
-            <p><%= link_to 'Delete question', question_path(question.id), method: :delete %>
+            <p><%= link_to 'Delete question', question, method: :delete %>
           </li>
         <% end %>
       </ul>
@@ -23,33 +22,23 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    quiz = @question.quiz
     render inline: <<~HEREDOC
-      <%= link_to 'Back', quiz_questions_path(#{quiz.id}) %>
+      <%= link_to 'Back', quiz_questions_path(#{@question.quiz.id}) %>
       <p><%= @question.body %></p>
     HEREDOC
   end
 
   def new
     @question = Question.new
-    template = <<~HEREDOC
-      <h1>Create Question</h1>
-      <form action="/quizzes/#{@quiz.id}/questions" method="POST">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <label for="question_body">Question Body<label>
-        <textarea name="body" id="question_body" rows="5"></textarea>
-        <input type="hidden" value="#{@quiz.id}" name="quiz_id">
-        <button type="submit">Add Question</button>
-      </form>
-    HEREDOC
-
-    render inline: template
   end
 
   def create
-    question = Question.new(question_params)
-    question.save
-    redirect_to quiz_questions_path
+    @question = @quiz.questions.build(question_params)
+    if @question.save
+      redirect_to quiz_questions_path, notice: 'Question was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -72,6 +61,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.permit(:body, :quiz_id)
+    params.require(:question).permit(:body, :quiz_id)
   end
 end
