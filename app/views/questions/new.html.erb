@@ -1,5 +1,7 @@
-<h1>Add Question</h1>
+<h1>
+  <%= question_header(@quiz) %>
+</h1>
 
 <%= render 'form', question: @question %>
 
-<%= link_to 'Back', quiz_questions_path %>
+<%= link_to 'Back', quiz_path(@quiz)%>
