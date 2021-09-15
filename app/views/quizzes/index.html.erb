@@ -1,0 +1,10 @@
+<h2>Quizzes:</h2>
+<ul style="list-style-type: none">
+  <% @quizzes.each do |quiz| %>
+  <li style="margin-bottom: 0.5em">
+    <%= link_to quiz, {style: 'text-decoration:none;'} do %> Category: <%=
+    quiz.category.title %>, <%= quiz.title %> level: <%= quiz.level %>,
+    questions: <%= quiz.questions.count %> <% end %>
+  </li>
+  <% end %>
+</ul>
