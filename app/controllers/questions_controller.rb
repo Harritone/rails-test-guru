@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @quiz_for_header = @question.quiz
   end
 
   def update
