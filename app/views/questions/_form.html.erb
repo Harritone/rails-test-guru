@@ -1,19 +1,13 @@
-<%= form_with model: [@quiz, question] do |form| %> <% if question.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(question.errors.count, "error") %> prohibited this question
-    from being saved:
-  </h2>
+<%= form_with model: [@quiz, question] do |form| %> 
+  <%= render 'shared/errors', resource: question %>
+  <div class="field">
+    <%= form.label :body %> 
+    <%= form.text_area :body, cols: 30, rows: 10 %>
+  </div>
+  <br />
 
-  <ul>
-    <% question.errors.each do |error| %>
-    <li><%= error.full_message %></li>
-    <% end %>
-  </ul>
-</div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
-
-<div class="field"><%= form.label :body %> <%= form.text_field :body %></div>
-
-<div class="actions"><%= form.submit %></div>
-<% end %>
+<br />
