@@ -1,0 +1,5 @@
+<li style="margin-bottom: 0.5em">
+  <%= link_to quiz, {style: 'text-decoration:none;'} do %> Category: <%=
+  quiz.category.title %>, <%= quiz.title %> level: <%= quiz.level %>,
+  questions: <%= quiz.questions.count %> <% end %>
+</li>

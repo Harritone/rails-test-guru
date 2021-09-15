@@ -1,49 +1,40 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[show destroy]
-  before_action :set_quiz, except: %i[show destroy]
+  before_action :set_question, only: %i[show destroy edit update]
+  before_action :set_quiz, only: %i[new create]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
-  def index
-    @questions = @quiz.questions
-    template = <<~HEREDOC
-      <h1>List of Questions:</h1>
-      <ul>
-        <% @questions.each do |question| %>
-          <li>
-            <%= link_to question.body, question_path(question.id) %>
-            <p><%= link_to 'Delete question', question, method: :delete %>
-          </li>
-        <% end %>
-      </ul>
-      <%= link_to 'Add question', new_quiz_question_path %>
-    HEREDOC
-
-    render inline: template
-  end
-
   def show
-    render inline: <<~HEREDOC
-      <%= link_to 'Back', quiz_questions_path(#{@question.quiz.id}) %>
-      <p><%= @question.body %></p>
-    HEREDOC
   end
 
   def new
     @question = Question.new
   end
 
+  def edit
+    @quiz_for_header = @question.quiz
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to quiz_path(@question.quiz)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def create
     @question = @quiz.questions.build(question_params)
     if @question.save
-      redirect_to quiz_questions_path, notice: 'Question was successfully created.'
+      redirect_to quiz_path(@quiz), notice: 'Question was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
+    quiz = @question.quiz
     @question.destroy
-    redirect_to quiz_questions_path
+    redirect_to quiz_path(quiz), notice: 'Question was successfully removed.'
   end
 
   private
@@ -61,6 +52,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :quiz_id)
+    params.require(:question).permit(:body)
   end
 end
