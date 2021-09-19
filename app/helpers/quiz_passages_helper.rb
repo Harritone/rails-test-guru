@@ -1,2 +1,0 @@
-module QuizPassagesHelper
-end
