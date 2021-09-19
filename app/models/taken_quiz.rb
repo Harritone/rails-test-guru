@@ -5,29 +5,43 @@ class TakenQuiz < ApplicationRecord
                                 optional: true,
                                 foreign_key: :current_question_id
 
-  before_validation :set_first_question, on: :create
+  before_validation :next_question
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
-
-    self.current_question = next_question
     save!
   end
-  
+
+  def success?
+    success_percentage >= 85 && self.completed?
+  end
+
+  def success_percentage
+    (100.0 / quiz.questions.count * correct_questions).to_i
+  end
+
+  def passage_percentage
+    100 / quiz.questions.count * amount_questions_passed
+  end
+
   def completed?
     self.current_question.nil?
+  end
+
+  def amount_questions_passed
+    quiz.questions.where('id <= ?', current_question.id).count
   end
 
   private
 
   def set_first_question
-    self.current_question = quiz.questions.order(:id).first if quiz.present?
+    quiz.questions.order(:id).first if quiz.present?
   end
 
   def correct_answer?(answer_ids)
     correct_answers_count = correct_answers.count
     (correct_answers_count == correct_answers.where(id: answer_ids).count) &&
-    correct_answers_count == answer_ids.count
+      correct_answers_count == answer_ids.count
   end
 
   def correct_answers
@@ -35,6 +49,11 @@ class TakenQuiz < ApplicationRecord
   end
 
   def next_question
-    quiz.questions.order(:id).where('id > ?', current_question_id).first
+    self.current_question =
+      if new_record?
+        set_first_question
+      else
+        quiz.questions.order(:id).where('id > ?', current_question_id).first
+      end
   end
 end
