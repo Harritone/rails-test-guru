@@ -17,11 +17,11 @@ class TakenQuiz < ApplicationRecord
   end
 
   def success_percentage
-    (100.0 / quiz.questions.count * correct_questions).to_i
+    (100.0 / quiz.questions_count * correct_questions).to_i
   end
 
   def passage_percentage
-    100 / quiz.questions.count * amount_questions_passed
+    100 / quiz.questions_count * amount_questions_passed
   end
 
   def completed?
