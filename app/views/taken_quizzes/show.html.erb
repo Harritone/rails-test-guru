@@ -1,5 +1,9 @@
 <h1>Passing the <%= @taken_quiz.quiz.title %> quiz</h1>
 
+<h3>
+  Question <%= @taken_quiz.amount_questions_passed %>/<%= @taken_quiz.quiz.questions.count %>
+</h3>
+
 <p>
   <%= @taken_quiz.current_question.body %>
 </p>
@@ -8,7 +12,7 @@
   <%= form.collection_check_boxes :answer_ids, @taken_quiz.current_question.answers, :id, :body, include_hidden: false do |b| %>
     <p>
       <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-      <%= b.label %>
+      <%= b.label %> 
     </p>
   <% end %>
   <p>
