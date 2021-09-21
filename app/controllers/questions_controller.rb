@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    @question = @quiz.questions.build
   end
 
   def edit
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   def destroy
     quiz = @question.quiz
     @question.destroy
-    redirect_to quiz_path(quiz), notice: 'Question was successfully removed.'
+    redirect_to quiz, notice: 'Question was successfully removed.'
   end
 
   private

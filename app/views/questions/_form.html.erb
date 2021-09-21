@@ -4,10 +4,11 @@
 
 <%= form_with model: [@quiz, question] do |form| %> 
   <%= render 'shared/errors', resource: question %>
-  <div class="field">
+  <p>
     <%= form.label :body %> 
+    <br>
     <%= form.text_area :body, cols: 30, rows: 10 %>
-  </div>
+  </p>
   <br />
 
   <div class="actions">
