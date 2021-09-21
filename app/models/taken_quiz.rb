@@ -6,6 +6,7 @@ class TakenQuiz < ApplicationRecord
                                 foreign_key: :current_question_id
 
   before_validation :next_question
+  
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
@@ -13,7 +14,7 @@ class TakenQuiz < ApplicationRecord
   end
 
   def success?
-    success_percentage >= 85 && self.completed?
+    success_percentage >= Constants::SUCCESS_PERSENTAGE && self.completed?
   end
 
   def success_percentage
@@ -35,7 +36,7 @@ class TakenQuiz < ApplicationRecord
   private
 
   def set_first_question
-    quiz.questions.order(:id).first if quiz.present?
+    quiz.questions.order(:id).first
   end
 
   def correct_answer?(answer_ids)
