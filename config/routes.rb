@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root to: 'quizzes#index'
   get :sign_up, to: 'users#new'
   
