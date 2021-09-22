@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_quiz, only: %i[show update edit destroy start]
-  before_action :set_user, only: :start
+
   def index
     @quizzes = Quiz.all
   end
@@ -39,8 +40,8 @@ class QuizzesController < ApplicationController
   end
 
   def start
-    @user.quizzes << @quiz
-    redirect_to quiz_passage_path(@user.quiz_passage(@quiz))
+    current_user.quizzes << @quiz
+    redirect_to quiz_passage_path(current_user.quiz_passage(@quiz))
   end
 
   private
@@ -49,7 +50,4 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
   end
 
-  def set_user
-    @user = User.first
-  end
 end

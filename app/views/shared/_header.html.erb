@@ -1,0 +1,18 @@
+<nav class="main-nav">
+  <div class="main-nav__logo">
+    <%= link_to 'Test Guru Project', root_path, class: 'main-nav__logo-item' %>
+  </div>
+  <ul class="main-nav__links">
+    <li class="main-nav__item">
+      <%= link_to 'Sign up', sign_up_path, class: 'main-nav__link' %>
+    </li>
+    <li class="main-nav__item">
+      <%= link_to 'Sign in', sign_in_path, class: 'main-nav__link' %>
+    </li>
+    <li class="main-nav__item">
+      <%= link_to 'Sign out', sign_out_path, method: :delete, class:
+      'main-nav__link' %>
+    </li>
+  </ul>
+</nav>
+<hr />
