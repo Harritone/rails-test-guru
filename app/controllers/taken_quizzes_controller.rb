@@ -1,4 +1,5 @@
 class TakenQuizzesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_taken_quiz, only: %i[show result update]
   def show
     redirect_to result_quiz_passage_path(@taken_quiz) if @taken_quiz.completed?
