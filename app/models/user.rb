@@ -5,6 +5,10 @@ class User < ApplicationRecord
                              foreign_key: :creator_id,
                              dependent: :nullify
 
+  validates :email, presence: true
+  validates :email, format: { with: /\w+@\w+[[.]\w+]*/i}
+  validates :email, uniqueness: true
+
   has_secure_password
 
   def taken_quizzes_by_level(level)
