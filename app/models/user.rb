@@ -5,9 +5,9 @@ class User < ApplicationRecord
                              foreign_key: :creator_id,
                              dependent: :nullify
 
-  validates :email, presence: true
-  validates :email, format: { with: /\w+@\w+[[.]\w+]*/i}
-  validates :email, uniqueness: true
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: /\w+@\w+[[.]\w+]*/i}
 
   has_secure_password
 
