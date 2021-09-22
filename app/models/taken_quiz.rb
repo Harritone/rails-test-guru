@@ -1,4 +1,5 @@
 class TakenQuiz < ApplicationRecord
+  SUCCESS_PERSENTAGE = 85.freeze
   belongs_to :user
   belongs_to :quiz
   belongs_to :current_question, class_name: 'Question',
@@ -7,14 +8,13 @@ class TakenQuiz < ApplicationRecord
 
   before_validation :next_question
   
-
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
   end
 
   def success?
-    success_percentage >= Constants::SUCCESS_PERSENTAGE && self.completed?
+    success_percentage >= SUCCESS_PERSENTAGE && self.completed?
   end
 
   def success_percentage
