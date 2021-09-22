@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'quizzes#index'
   get :sign_up, to: 'users#new'
   get :sign_in, to: 'sessions#new'
-  get :log_out, to: 'sessions#destroy'
+  delete :sign_out, to: 'sessions#destroy'
 
   resources :users, only: :create
   resources :sessions, only: :create
