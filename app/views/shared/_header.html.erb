@@ -4,15 +4,16 @@
   </div>
   <ul class="main-nav__links">
     <li class="main-nav__item">
-      <%= link_to 'Sign up', sign_up_path, class: 'main-nav__link' %>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'main-nav__link' %>
     </li>
     <li class="main-nav__item">
-      <%= link_to 'Sign in', sign_in_path, class: 'main-nav__link' %>
+      <%= link_to 'Sign in',  new_user_session_path, class: 'main-nav__link' %>
     </li>
-    <li class="main-nav__item">
-      <%= link_to 'Sign out', sign_out_path, method: :delete, class:
-      'main-nav__link' %>
-    </li>
+    <% if current_user %>
+      <li class="main-nav__item">
+        <%= link_to 'logout', destroy_user_session_path, method: :delete, class: 'main-nav__link' %>
+      </li>
+    <% end %>
   </ul>
 </nav>
 <hr />

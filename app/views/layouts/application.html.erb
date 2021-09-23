@@ -12,12 +12,12 @@
 
   <body>
     <%= render 'shared/header' %>
-    <p id="notice"><%= notice %></p>
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <p class="nav user">
         Welcome, <b><%= current_user.email %></b> Guru
       </p>
     <% end %>
+    <%= flash_messages %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>
