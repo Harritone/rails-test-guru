@@ -49,5 +49,4 @@ class QuizzesController < ApplicationController
   def set_quiz
     @quiz = Quiz.find(params[:id])
   end
-
 end
