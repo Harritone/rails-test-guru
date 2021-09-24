@@ -1,0 +1,24 @@
+<p>
+  <strong>Quiz:</strong>
+  <%= @quiz.title %>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Questions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%# @quiz.questions.each do |question| %>
+      <%#= render question %>
+    <%# end %>
+    <%= render @quiz.questions %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', admin_quizzes_path %> | 
+<%= link_to 'Edit Quiz', edit_admin_quiz_path %> |
+<%= link_to 'Add question', new_admin_quiz_question_path(@quiz) %>

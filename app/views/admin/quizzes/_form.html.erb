@@ -1,0 +1,24 @@
+<%= form_with model: [:admin, quiz] do |form| %> 
+  <%= render 'shared/errors', resource: quiz %>
+  <p>
+    <%= form.collection_select :category_id, @categories, :id, :title %>
+  </p>
+  <p>
+    <%= form.label :title %> 
+    <br>
+    <%= form.text_field :title, id: :quiz_title %>
+  </p>
+  <br />
+
+  <p>
+    <%= form.label :level %> 
+    <br>
+    <%= form.text_field :level, id: :quiz_level %>
+  </p>
+  <br />
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<br />

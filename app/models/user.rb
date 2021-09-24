@@ -13,10 +13,18 @@ class User < ApplicationRecord
 
   validates :email, presence: true,
                     uniqueness: true,
-                    format: { with: /\w+@\w+[[.]\w+]*/i}
+                    format: { with: /\w+@\w+[[.]\w+]*/i }
 
   def taken_quizzes_by_level(level)
     Quiz.joins(:taken_quizzes).where('taken_quizzes.user_id': id, level: level)
+  end
+
+  def username
+    if first_name || last_name
+      "#{first_name} #{last_name}"
+    else 
+      email
+    end
   end
 
   def quiz_passage(quiz)

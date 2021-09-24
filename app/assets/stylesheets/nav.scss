@@ -1,3 +1,37 @@
-.nav.user {
-  text-align: right;
+.nav {
+  &.user {
+    text-align: right;
+
+    &-email {
+      border-bottom: 1px solid #3c85e0;
+    }
+  }
+
+  &.nav-admin {
+    height: 35px;
+    padding: 15px;
+    line-height: 35px;
+    color: #fff;
+    background-color: #4293e6;
+    margin-bottom: 40px;
+
+    a {
+      color: #fff;
+    }
+  }
+
+  &-admin {
+    &.title {
+      font-size: 140%;
+      font-weight: bold;
+    }
+
+    &.user {
+      float: right;
+
+      &-email {
+        text-decoration: underline;
+      }
+    }
+  }
 }
