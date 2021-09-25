@@ -1,6 +1,4 @@
 class Admin::QuizzesController < Admin::BaseController
-  before_action :authenticate_user!
-  before_action :admin_required!
   before_action :set_quiz, only: %i[show update edit destroy start]
   before_action :set_categories, only: %i[new edit]
 
@@ -17,8 +15,7 @@ class Admin::QuizzesController < Admin::BaseController
   end
 
   def create
-    @quiz = Quiz.new(quiz_params)
-    @quiz.creator = current_user
+    @quiz = current_user.created_quizzes.build(quiz_params)
     if @quiz.save
       redirect_to admin_quiz_path(@quiz)
     else
