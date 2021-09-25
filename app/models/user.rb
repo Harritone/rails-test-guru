@@ -20,11 +20,15 @@ class User < ApplicationRecord
   end
 
   def username
-    if first_name || last_name
+    if self.first_name || self.last_name
       "#{first_name} #{last_name}"
     else 
       email
     end
+  end
+
+  def admin?
+    type == 'Admin'
   end
 
   def quiz_passage(quiz)
