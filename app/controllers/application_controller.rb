@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = "Welcome, #{current_user.username}!"
-    current_user.admin? ? admin_quizzes_path : root_path
+    flash[:notice] = "Welcome, #{resource.username}!"
+    resource.admin? ? admin_quizzes_path : root_path
   end
 
   protected
