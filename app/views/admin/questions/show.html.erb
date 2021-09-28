@@ -3,7 +3,7 @@
   <%= @question.body %>
 </p>
 
-<%= link_to 'Add Answer', new_admin_question_answer_path(@question) %>
+<%= link_to t('add'), new_admin_question_answer_path(@question) %>
 
 <h2>Answers:</h2>
 
@@ -11,5 +11,5 @@
   <%= render @question.answers %>
 </ol>
 
-<%= link_to 'Edit', edit_admin_question_path(@question) %> |
-<%= link_to 'Back', admin_quiz_path(@question.quiz) %>
+<%= link_to t('edit'), edit_admin_question_path(@question) %> |
+<%= link_to t('back'), admin_quiz_path(@question.quiz) %>

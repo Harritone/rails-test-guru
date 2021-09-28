@@ -1,0 +1,33 @@
+end:
+  activerecord:
+    models:
+      quiz: 'Quiz'
+      category: 'Category'
+      question: 'Question'
+      user: 'User'
+      admin: 'Admin'
+      answer: 'Answer'
+
+    attributes:
+      quiz:
+        title: 'Title'
+        level: 'Level'
+        creator: 'Creator'
+        category_id: 'Category'
+      category: 
+        title: 'Title'
+      question: 
+        body: 'Text of the question'
+      answer: 
+        body: 'Text of the answer'
+        correct: 'Correct'
+      user:
+        email: 'Email'
+        password: 'Password'
+        first_name: 'First name'
+        last_name: 'Last name'
+
+    errors:
+      messages: 
+        blank: "Can't be blank"
+

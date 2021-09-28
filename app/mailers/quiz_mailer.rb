@@ -3,6 +3,6 @@ class QuizMailer < ApplicationMailer
     @user = quiz_passage.user
     @quiz = quiz_passage.quiz
 
-    mail to: @user.email, subject: "You've completed the QuizGuru quiz!"
+    mail to: @user.email
   end
 end

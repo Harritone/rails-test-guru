@@ -1,6 +1,7 @@
 <%= form_with model: [:admin, quiz] do |form| %> 
   <%= render 'shared/errors', resource: quiz %>
   <p>
+    <%= form.label :category_id %>
     <%= form.collection_select :category_id, @categories, :id, :title %>
   </p>
   <p>

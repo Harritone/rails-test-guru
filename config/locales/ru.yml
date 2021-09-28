@@ -1,0 +1,106 @@
+ru:
+  question: 'Вопрос'
+  helpers:
+    select:
+      prompt: 'Выберите категорию'
+    submit:
+      quiz:
+        create: "Создать Тест"
+        update: "Обновить Тест" 
+      question:
+        create: "Добавить Вопрос"
+        update: "Обновить Вопрос" 
+    label: 
+      quiz:
+        title: 'Название'
+        level: 'Уровень'
+        category_id: 'Категория'
+      question:
+        body: 'Текст вопроса'
+      answer:
+        body: 'Текст ответа'
+        correct: 'Правильный ответ'
+  quizzes:
+    index: 
+      header: 'Доступные Тесты'
+  taken_quizzes:
+    show:
+      header: 'Прохождение %{title} теста'
+    result: 
+      header: 'Тест %{title} завершен!'
+      result: 'Ваш результат'
+  shared:
+    errors:
+      header: 
+        one: '%{count} ошибка не даёт сохранить %{source}'
+        few: '%{count} ошибки не дают сохранить %{source}'
+        many: '%{count} ошибок не дают сохранить %{source}'
+        other: '%{count} ошибки не дают сохранить %{source}'
+  admin:
+    nav:
+      header: 'ТестГуру Панель Администратора'
+      welcome_html: 'Привет, <b class="nav-admin user-email">%{username}</b>, Гуру.'
+      logout: 'Выход'
+    quizzes:
+      quiz:
+        category: 'Кетегория'
+        level: 'Уровень'
+        questions: 'вопросов'
+        remove: 'Удалить'
+      create:
+        success: 'Тест успешно создан.'
+      index:
+        header: 'Доступные Тесты'
+        add: 'Добавить Тест'
+      new:
+        header: 'Добавить новый Тест'
+        back: 'Назад'
+        create: 'Создание'
+      update: 
+        success: 'Тест успешно обновлён.'
+      edit:
+        header: 'Редактирование Теста'
+        back: 'Назад'
+      destroy: 
+        success: 'Тест был успешно удалён.'
+      show:
+        quiz: 'Тест'
+        questions: 'Вопросы'
+        back: 'Назад'
+        edit: 'Редактировать Тест'
+        add: 'Добавить вопрос'
+    questions:
+      create:
+        success: 'Вопрос был успешно создан'
+      update:
+        success: 'Вопрос был успешно обновлён'
+      destroy:
+        success: 'Вопрос был удалён'
+      question:
+        show: 'Показать'
+        edit: 'Редактировать'
+        remove: 'Удалить'
+      new:
+        create: 'Добавить'
+      edit:
+        edit: 'Редактирование'
+      show:
+    question: 'вопрос'
+    answers:
+      create:
+        success: 'Ответ был успешно создан'
+      update:
+        success: 'Ответ был успешно обновлён'
+      destroy:
+        success: 'Ответ был удалён'
+      answer:
+        edit: 
+          edit: 'Редактирование ответа'
+        new:
+          new: 'Создание ответа'
+      show: 
+        header: 'Вопрос'
+        subheader: 'Ответ'
+  quiz_mailer:
+    completed_test:
+      subject: 'Вы только что завершили Тест на платформе ТестГуру'

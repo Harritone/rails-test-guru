@@ -1,0 +1,32 @@
+ru:
+  activerecord:
+    models:
+      quiz: 'Тест'
+      category: 'Категория'
+      question: 'Вопрос'
+      user: 'Пользователь'
+      admin: 'Администратор'
+      answer: 'Ответ'
+
+    attributes:
+      quiz:
+        title: 'Название'
+        level: 'Уровень'
+        creator: 'Создатель'
+        category_id: 'Категория'
+      category: 
+        title: 'Название'
+      question: 
+        body: 'Текст вопроса'
+      answer: 
+        body: 'Текст ответа'
+        correct: 'Правильный'
+      user:
+        email: 'Электронная почта'
+        password: 'Пароль'
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+
+    errors:
+      messages: 
+        blank: 'не может быть пустым'

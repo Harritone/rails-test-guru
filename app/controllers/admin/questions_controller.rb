@@ -16,7 +16,7 @@ class Admin::QuestionsController < Admin::BaseController
 
   def update
     if @question.update(question_params)
-      redirect_to admin_quiz_path(@question.quiz)
+      redirect_to admin_quiz_path(@question.quiz), notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class Admin::QuestionsController < Admin::BaseController
   def create
     @question = @quiz.questions.build(question_params)
     if @question.save
-      redirect_to quiz_path(@quiz), notice: 'Question was successfully created.'
+      redirect_to quiz_path(@quiz), notice: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class Admin::QuestionsController < Admin::BaseController
   def destroy
     quiz = @question.quiz
     @question.destroy
-    redirect_to admin_quiz_path(quiz), notice: 'Question was successfully removed.'
+    redirect_to admin_quiz_path(quiz), notice: t('.success')
   end
 
   private

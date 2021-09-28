@@ -1,6 +1,6 @@
 class Admin::QuizzesController < Admin::BaseController
   before_action :set_quiz, only: %i[show update edit destroy start]
-  before_action :set_categories, only: %i[new edit]
+  before_action :set_categories, only: %i[new edit create]
 
   def index
     @quizzes = Quiz.all
@@ -17,7 +17,7 @@ class Admin::QuizzesController < Admin::BaseController
   def create
     @quiz = current_user.created_quizzes.build(quiz_params)
     if @quiz.save
-      redirect_to admin_quiz_path(@quiz)
+      redirect_to [:admin, @quiz], notice: t('.success')
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Admin::QuizzesController < Admin::BaseController
 
   def update
     if @quiz.update(quiz_params)
-      redirect_to admin_quiz_path(@quiz)
+      redirect_to [:admin, @quiz], notice: t('.success')
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::QuizzesController < Admin::BaseController
 
   def destroy
     @quiz.destroy
-    redirect_to admin_quizzes_path
+    redirect_to admin_quizzes_path, notice: t('.success')
   end
 
   private
