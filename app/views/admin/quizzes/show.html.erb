@@ -1,11 +1,11 @@
 <p>
-  <strong>Quiz:</strong>
+  <strong><%= t('.quiz') %>:</strong>
   <%= @quiz.title %>
 </p>
 <table>
   <thead>
     <tr>
-      <th>Questions</th>
+      <th><%= t('.questions') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,6 +19,6 @@
 </table>
 
 
-<%= link_to 'Back', admin_quizzes_path %> | 
-<%= link_to 'Edit Quiz', edit_admin_quiz_path %> |
-<%= link_to 'Add question', new_admin_quiz_question_path(@quiz) %>
+<%= link_to t('.back'), admin_quizzes_path %> | 
+<%= link_to t('.edit'), edit_admin_quiz_path %> |
+<%= link_to t('.add'), new_admin_quiz_question_path(@quiz) %>

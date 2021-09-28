@@ -15,7 +15,7 @@ class Admin::AnswersController < Admin::BaseController
   def create
     @answer = @question.answers.build(answer_params)
     if @answer.save
-      redirect_to admin_answer_path(@answer), notice: 'answer was successfully created.'
+      redirect_to admin_answer_path(@answer), notice: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class Admin::AnswersController < Admin::BaseController
 
   def update
     if @answer.update(answer_params)
-      redirect_to admin_answer_path(@answer), notice: 'answer was successfully updated.'
+      redirect_to admin_answer_path(@answer), notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class Admin::AnswersController < Admin::BaseController
 
   def destroy
     @answer.destroy
-    redirect_to admin_question_path(@answer.question), notice: 'answer was successfully destroyed.'
+    redirect_to admin_question_path(@answer.question), notice: t('.success')
   end
 
   private

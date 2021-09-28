@@ -1,7 +1,7 @@
-<h1>Passing the <%= @taken_quiz.quiz.title %> quiz</h1>
+<h1><%= t('.header', title: @taken_quiz.quiz.title) %></h1>
 
 <h3>
-  Question <%= @taken_quiz.amount_questions_passed %>/<%= @taken_quiz.quiz.questions_count %>
+  <%= t('question') %> <%= @taken_quiz.amount_questions_passed %>/<%= @taken_quiz.quiz.questions_count %>
 </h3>
 
 <p>
@@ -16,6 +16,6 @@
     </p>
   <% end %>
   <p>
-    <%= form.submit 'Next' %>
+    <%= form.submit t('next') %>
   </p>
 <% end %>

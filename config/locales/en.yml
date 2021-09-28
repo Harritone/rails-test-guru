@@ -1,33 +1,111 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  question: 'Question'
+  helpers:
+    select:
+      prompt: 'Choose category'
+    submit:
+      quiz:
+        create: "Create Quiz"
+        update: "Update Quiz" 
+      question:
+        create: "Create Question"
+        update: "Update Question" 
+    label: 
+      quiz:
+        title: 'Title'
+        level: 'Level'
+        category_id: 'Category'
+      question:
+        body: 'Text of the question'
+      answer:
+        body: 'Text of the answer'
+        correct: 'Correct'
+
+  shared:
+    errors:
+      header: 
+        one: '%{count} error prohibited this %{source} from being saved'
+        other: '%{count} errors prohibited this %{source} from being saved'
+
+  taken_quizzes:
+    show:
+      header: 'Passing %{title} quiz'
+    result: 
+      header: 'Quiz %{title} completed!'
+      result: 'Your result is '
+  quizzes:
+    index: 
+      header: 'Available Quizzes'
+    label: 
+      quiz:
+        title: 'Title'
+        level: 'Level'
+        category_id: 'Category'
+  admin:
+    nav:
+      header: 'QuizGuru Admin Panel'
+      welcome_html: 'Welcome, <b class="nav-admin user-email">%{username}</b>, Guru.'
+      guru: 'Guru'
+      logout: 'Logout'
+    quizzes:
+      quiz:
+        category: 'Category'
+        level: 'level'
+        questions: 'questions'
+        remove: 'Remove'
+      create:
+        success: 'Quiz was succesfully created.'
+      index:
+        header: 'Tricky Quizzes'
+        add: 'Add Quiz'
+      new:
+        header: 'Create New Quiz'
+        back: 'back'
+      update: 
+        success: 'Quiz was successfully updated.'
+      edit:
+        header: 'Editing Quiz'
+        back: 'Back'
+      destroy: 
+        success: 'Quiz was successfully removed.'
+      show:
+        quiz: 'Quiz'
+        questions: 'Questions'
+        back: 'Back'
+        edit: 'Edit Quiz'
+        add: 'Add question'
+    questions:
+      create:
+        success: 'Question was created'
+      update:
+        success: 'Question was updated'
+      destroy:
+        success: 'Question was removed'
+      question:
+        show: 'Show'
+        edit: 'Edit'
+        remove: 'Remove'
+      new:
+        create: 'Add'
+      edit:
+        edit: 'Edit'
+      show:
+    question: 'question'
+    answers:
+      create:
+        success: 'Answer was created'
+      update:
+        success: 'Answer was updated'
+      destroy:
+        success: 'Answer was removed'
+      answer:
+        edit: 
+          edit: 'Editing answer'
+        new:
+          new: 'Creating answer'
+        show: 
+          header: 'Question'
+          subheader: 'Answer'
+  quiz_mailer:
+    completed_test:
+      subject: 'You just completed the QuizGuru quiz!'

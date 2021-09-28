@@ -1,8 +1,8 @@
 <li style="margin-bottom: 0.5em">
   <%= link_to admin_quiz_path(quiz), {style: 'text-decoration:none;'} do %> 
-  Category: <%= quiz.category.title %>, <%= quiz.title %> level: <%= quiz.level %>, questions: <%= quiz.questions.count %> 
-  <% end %> 
-  <%= link_to 'Remove', admin_quiz_path(quiz), method: :delete %>
+  <%= t('.category') %>: <%= quiz.category.title %>, <%= quiz.title %> <%= t('.level') %>: <%= quiz.level %>, <%= t('.questions') %>: <%= quiz.questions.count %> 
+  <% end %> |
+  <%= link_to t('.remove'), admin_quiz_path(quiz), method: :delete %>
   <br>
 
 </li>
