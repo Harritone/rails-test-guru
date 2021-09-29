@@ -1,19 +1,37 @@
-<nav class="main-nav">
-  <div class="main-nav__logo">
-    <%= link_to 'Test Guru Project', root_path, class: 'main-nav__logo-item' %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+  <div class="container-fluid">
+    <%= link_to 'QuizGuru', root_path, class: 'navbar-brand' %>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if !user_signed_in? %>
+          <li class="navbar-item">
+            <%= link_to t('.signup'), new_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="navbar-item">
+            <%= link_to t('.signin'),  new_user_session_path, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <% if current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to t('.admin'), admin_quizzes_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+          <li class="navbar-item">
+            <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <ul class="main-nav__links">
-    <li class="main-nav__item">
-      <%= link_to 'Sign up', new_user_registration_path, class: 'main-nav__link' %>
-    </li>
-    <li class="main-nav__item">
-      <%= link_to 'Sign in',  new_user_session_path, class: 'main-nav__link' %>
-    </li>
-    <% if current_user %>
-      <li class="main-nav__item">
-        <%= link_to 'logout', destroy_user_session_path, method: :delete, class: 'main-nav__link' %>
-      </li>
-    <% end %>
-  </ul>
 </nav>
-<hr />

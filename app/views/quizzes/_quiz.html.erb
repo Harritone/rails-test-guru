@@ -1,5 +1,10 @@
-<li style="margin-bottom: 0.5em">
-  Category: <%= quiz.category.title %>, <%= quiz.title %> level: <%= quiz.level %>, questions: <%= quiz.questions.count %>
-  <%= button_to 'Start', start_quiz_path(quiz) %>
-  <br>
+<li class="list-group-item">
+    <div class="mb-3 row">
+      <div class="col-sm-6">
+        Category: <%= quiz.category.title %>, <%= quiz.title %> level: <%= quiz.level %>, questions: <%= quiz.questions.count %>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to 'Start', start_quiz_path(quiz), class: 'btn btn-sm btn-success', method: :post %>
+      </div>
+    </div>
 </li>

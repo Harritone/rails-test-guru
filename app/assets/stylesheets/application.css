@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+main {
+  min-height: 90vh;
+}
+#footer {
+  height: 10vh;
+}
