@@ -42,6 +42,7 @@ ru:
     registrations:
       new:
         header: 'Регистрация на TestGuru'
+        become: 'Стать Гуру'
       edit:
         header: 'Редактирование профиля'
         leave_blank: '(оставтье поле пустым,если не хотите менять его)'
@@ -64,6 +65,8 @@ ru:
       already_signed_out: "Выход из системы выполнен."
       new:
         greeting: 'Вход на TestGuru'
+        enter: 'Войти в ворота Гуру'
+        login: 'Воойти в Ворота'
     unlocks:
       new:
         header: 'Разблокировка учетной записи'
@@ -82,3 +85,4 @@ ru:
         one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
         few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
+        otehr: "%{resource}: сохранение не удалось из-за %{count} ошибок"

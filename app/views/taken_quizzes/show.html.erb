@@ -1,21 +1,27 @@
-<h1><%= t('.header', title: @taken_quiz.quiz.title) %></h1>
-
-<h3>
-  <%= t('question') %> <%= @taken_quiz.amount_questions_passed %>/<%= @taken_quiz.quiz.questions_count %>
-</h3>
-
-<p>
-  <%= @taken_quiz.current_question.body %>
-</p>
-
-<%= form_with url: quiz_passage_path(@taken_quiz), local: true, method: :put do |form| %>
-  <%= form.collection_check_boxes :answer_ids, @taken_quiz.current_question.answers, :id, :body, include_hidden: false do |b| %>
+<div class="card mb-3">
+  <div class="card-header text-center">
+    <h1><%= t('.header', title: @taken_quiz.quiz.title) %></h1>
+  </div>
+  <div class="card-title">
+    <h3 class="mx-2">
+      <%= t('question') %> <%= @taken_quiz.amount_questions_passed %>/<%= @taken_quiz.quiz.questions_count %>
+    </h3>
+  </div>
+  <div class="card-body">
     <p>
-      <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-      <%= b.label %> 
+      <%= @taken_quiz.current_question.body %>
     </p>
+
+    <%= form_with url: quiz_passage_path(@taken_quiz), local: true, method: :put do |form| %>
+      <%= form.collection_check_boxes :answer_ids, @taken_quiz.current_question.answers, :id, :body, include_hidden: false do |b| %>
+        <p>
+          <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+          <%= b.label %> 
+        </p>
+      <% end %>
+  </div>
+  <div class="card-footer">
+    <%= form.submit t('next'), class: 'btn btn-success' %>
+  </div>
   <% end %>
-  <p>
-    <%= form.submit t('next') %>
-  </p>
-<% end %>
+</div>

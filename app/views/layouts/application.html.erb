@@ -11,14 +11,14 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
-    <% if user_signed_in? %>
-      <p class="nav user">
-        Welcome, <b><%= current_user.email %></b> Guru
-      </p>
-    <% end %>
-    <%= flash_messages %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <main>
+      <%= render 'shared/header' %>
+      <div class="container">
+        <%= flash_messages %>
+        <%= yield %>
+        </main>
+      </div>
+    </main>
+      <%= render 'shared/footer' %>
   </body>
 </html>
