@@ -18,6 +18,8 @@ module TestGuru
     #
     config.time_zone = 'Vladivostok'
     config.i18n.default_locale = :ru
+    config.autoload_paths << config.root.join('lib', 'clients')
+    # config.autoload_paths << config.root.join('services')
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

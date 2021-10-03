@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :quiz_passages, controller: :taken_quizzes, only: %i[show update] do
     member do
       get :result
+      post :gist
     end
   end
 

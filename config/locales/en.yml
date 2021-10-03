@@ -30,9 +30,13 @@ en:
   taken_quizzes:
     show:
       header: 'Passing %{title} quiz'
+      gist: 'Gist question'
     result: 
       header: 'Quiz %{title} completed!'
       result: 'Your result is '
+    gist:
+      success: 'Gist was published'
+      failure: 'Something went wrong'
   quizzes:
     index: 
       header: 'Available Quizzes'

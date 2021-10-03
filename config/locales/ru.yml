@@ -26,9 +26,13 @@ ru:
   taken_quizzes:
     show:
       header: 'Прохождение %{title} теста'
+      gist: 'Запостить Гист'
     result: 
       header: 'Тест %{title} завершен!'
       result: 'Ваш результат'
+    gist:
+      success_html: 'Гист был <a class="link-primary" href="%{url}">опубликован</a>'
+      failure: 'Что-то пошло не так'
   shared:
     errors:
       header: 
