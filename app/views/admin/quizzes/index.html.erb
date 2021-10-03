@@ -1,5 +1,15 @@
 <h2><%= t('.header') %></h2>
-<ul style="list-style-type: none">
-  <%= render @quizzes %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('.category') %></th>
+      <th scope="col"><%= t('.level') %></th>
+      <th scope="col"><%= t('.questions_count') %></th>
+      <th scope="col"><%= t('.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @quizzes %>
+  </tbody>
+</table>
 <%= link_to t('.add'), new_admin_quiz_path %>

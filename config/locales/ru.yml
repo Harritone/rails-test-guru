@@ -49,17 +49,25 @@ ru:
     nav:
       welcome_html: 'Привет, <b class="nav-admin user-email">%{username}</b>, Гуру.'
       logout: 'Выход'
+      gists: 'Гисты'
+      quizzes: 'Тесты'
+    gists: 
+      index:
+        question: 'Вопрос'
+        url: 'Ссылка на гист'
+        user: 'Пользователь'
+      gist:
+        visit: 'Посетить'
     quizzes:
-      quiz:
-        category: 'Кетегория'
-        level: 'Уровень'
-        questions: 'вопросов'
-        remove: 'Удалить'
       create:
         success: 'Тест успешно создан.'
       index:
         header: 'Доступные Тесты'
         add: 'Добавить Тест'
+        category: 'Кетегория'
+        level: 'Уровень'
+        questions_count: 'Количество вопросов'
+        actions: 'Действия'
       new:
         header: 'Добавить новый Тест'
         back: 'Назад'
@@ -111,4 +119,7 @@ ru:
         subheader: 'Ответ'
   quiz_mailer:
     completed_test:
-      subject: 'Вы только что завершили Тест на платформе ТестГуру'
+      subject: 'Вы только что завершили Тест на платформе QuizGuru'
+  services:
+    gist_question_service:
+      description: "Вопрос о %{title} от QuizGuru"
