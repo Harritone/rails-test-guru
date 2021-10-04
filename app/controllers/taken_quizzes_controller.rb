@@ -24,9 +24,8 @@ class TakenQuizzesController < ApplicationController
     result = GistQuestionService.new(current_question).call
 
     notice = if result.success?
-      gist = Gist.create(question: current_question,
-                         url: result[:html_url],
-                         user: current_user)
+      gist = current_user.gists.create(question: current_question,
+                                       url: result.html_url)
       { notice: t('.success_html', url: gist.url) }
     else
       { notice: t('.failure') }

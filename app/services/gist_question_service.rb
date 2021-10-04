@@ -1,26 +1,25 @@
 class GistQuestionService
-  class Result
-    def initialize(hash)
-      @hash = hash
-    end
-
-    def [](key)
-      @hash[key]
-    end
-
-    def success?
-      !@hash[:html_url].nil?
-    end
-  end
+  FIRST_SUCCESS_STATUS_CODE = 200.freeze
+  LAST_SUCCESS_STATUS_CODE = 226.freeze
 
   def initialize(question, client: nil)
     @question = question
     @quiz = @question.quiz
-    @client = client || Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
+    @client = client || OctokitClient.new(access_token: ENV['GITHUB_TOKEN'])
   end
 
   def call
-    Result.new(@client.create_gist(gist_params))
+    @client.create_gist(gist_params)
+    self
+  end
+
+  def html_url
+    @client.html_url
+  end
+
+  def success?
+    @client.response.status.between?(FIRST_SUCCESS_STATUS_CODE,
+                                         LAST_SUCCESS_STATUS_CODE)
   end
 
   private
@@ -28,7 +27,6 @@ class GistQuestionService
   def gist_params
     {
       description: I18n.t('services.gist_question_service.description', title: @quiz.title),
-      # description: "A question about#{@quiz.title} from QuizGuru",
       files: {
         'quiz-guru-question.txt': {
           content: gist_content
