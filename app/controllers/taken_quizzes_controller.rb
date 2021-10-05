@@ -1,6 +1,6 @@
 class TakenQuizzesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_taken_quiz, only: %i[show result update]
+  before_action :set_taken_quiz, only: %i[show result update gist]
 
   def show
     redirect_to result_quiz_passage_path(@taken_quiz) if @taken_quiz.completed?
@@ -17,6 +17,21 @@ class TakenQuizzesController < ApplicationController
     else
       render :show
     end
+  end
+
+  def gist
+    current_question = @taken_quiz.current_question
+    result = GistQuestionService.new(current_question).call
+
+    notice = if result.success?
+      gist = current_user.gists.create(question: current_question,
+                                       url: result.html_url)
+      { notice: t('.success_html', url: gist.url) }
+    else
+      { notice: t('.failure') }
+    end
+
+    redirect_to quiz_passage_path(@taken_quiz), notice
   end
 
   private

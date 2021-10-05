@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :taken_quizzes
+  has_many :gists, dependent: :destroy
   has_many :quizzes, through: :taken_quizzes
   has_many :created_quizzes, class_name: 'Quiz',
                              foreign_key: :creator_id,

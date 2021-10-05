@@ -26,13 +26,23 @@ en:
       header: 
         one: '%{count} error prohibited this %{source} from being saved'
         other: '%{count} errors prohibited this %{source} from being saved'
+    header:
+      signin: 'Login'
+      signup: 'Register'
+      logout: 'Logout'
+      admin: 'Admin panel'
+      gists: 'Gists'
 
   taken_quizzes:
     show:
       header: 'Passing %{title} quiz'
+      gist: 'Gist question'
     result: 
       header: 'Quiz %{title} completed!'
       result: 'Your result is '
+    gist:
+      success_html: 'Gist <a class="link-primary" href="%{url}">published</a>'
+      failure: 'Something went wrong'
   quizzes:
     index: 
       header: 'Available Quizzes'
@@ -47,6 +57,13 @@ en:
       welcome_html: 'Welcome, <b class="nav-admin user-email">%{username}</b>, Guru.'
       guru: 'Guru'
       logout: 'Logout'
+    gists: 
+      index:
+        question: 'Question'
+        url: 'Link'
+        user: 'User'
+      gist:
+        visit: 'Visit'
     quizzes:
       quiz:
         category: 'Category'
@@ -109,3 +126,6 @@ en:
   quiz_mailer:
     completed_test:
       subject: 'You just completed the QuizGuru quiz!'
+  services:
+    gist_question_service:
+      description: "Question about %{title} from QuizGuru"
