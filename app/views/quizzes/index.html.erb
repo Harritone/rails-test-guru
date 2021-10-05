@@ -1,4 +1,20 @@
 <h2><%= t('.header') %></h2>
-<ul class="list-group list-group-flush">
-  <%= render @quizzes %>
-</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('.category') %></th>
+      <th scope="col" class="sort-by-title">
+        <%= t('.title') %>
+        <i class="fas fa-caret-down text-success d-none"></i>
+        <i class="fas fa-caret-up text-success d-none"></i>
+      </th>
+      <th scope="col"><%= t('.level') %></th>
+      <th scope="col"><%= t('.questions_count') %></th>
+      <th scope="col"><%= t('.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @quizzes %>
+  </tbody>
+</table>

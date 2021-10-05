@@ -10,6 +10,8 @@ import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap/dist/css/bootstrap';
 import 'channels';
 import '@fortawesome/fontawesome-free/css/all';
+import '../utils/sorting';
+import '../utils/passwordCheck';
 
 Rails.start();
 Turbolinks.start();

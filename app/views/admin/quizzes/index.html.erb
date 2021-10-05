@@ -3,6 +3,11 @@
   <thead>
     <tr>
       <th scope="col"><%= t('.category') %></th>
+      <th scope="col" class="sort-by-title">
+        <%= t('.title') %>
+        <i class="fas fa-caret-down text-success d-none"></i>
+        <i class="fas fa-caret-up text-success d-none"></i>
+      </th>
       <th scope="col"><%= t('.level') %></th>
       <th scope="col"><%= t('.questions_count') %></th>
       <th scope="col"><%= t('.actions') %></th>
