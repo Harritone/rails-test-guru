@@ -11,8 +11,9 @@ document.addEventListener('turbolinks:load', function () {
 
     passwordConfirmationInput.addEventListener('input', function () {
       const passwordInput = document.getElementById('user_password');
-      console.log(passwordInput.value);
       if (this.value === passwordInput.value) {
+        passwordErrorElement.classList.remove('d-block');
+      } else if (this.value === '') {
         passwordErrorElement.classList.remove('d-block');
       } else {
         passwordErrorElement.classList.add('d-block');
