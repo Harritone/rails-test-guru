@@ -1,7 +1,7 @@
 class Admin::QuizzesController < Admin::BaseController
   before_action :set_quizzes, only: %i[index update_inline]
   before_action :set_quiz, only: %i[show update edit destroy start update_inline]
-  before_action :set_categories, only: %i[new edit create]
+  before_action :set_categories, only: %i[new edit create update]
 
   def index
   end
