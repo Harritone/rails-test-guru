@@ -9,7 +9,7 @@ class Answer < ApplicationRecord
   scope :correct_for_quiz, ->(quiz_id) { correct.joins(:question).where(questions: { quiz_id: quiz_id })}
 
   def number_of_answers_for_question
-    count = question.answers.count
-    @errors.add(:answer, "more than 4 answers aren't allowed") if count > 4
+    count = self.question.answers.count
+    @errors.add(:answer, I18n.t('activerecord.errors.messages.answers_cnt')) if count > 4
   end
 end

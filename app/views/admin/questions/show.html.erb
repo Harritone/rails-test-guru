@@ -5,7 +5,7 @@
 
 <%= link_to t('add'), new_admin_question_answer_path(@question) %>
 
-<h2>Answers:</h2>
+<h2><%= t('.answers') %></h2>
 
 <ol>
   <%= render @question.answers %>

@@ -1,9 +1,11 @@
-<h1><%= t('.edit') %></h1>
-
-<p>
-  <%= @answer.question.body %>
-</p>
-
-<%= render 'form', answer: @answer %>
-
-<%= link_to t('back'), admin_question_path(@answer.question) %>
+<div class="justify-content-center">
+  <div class="card mb-3">
+    <div class="card-header">
+      <h1><%= t('.header', question: truncate(@answer.question.body, length: 12)) %></h1>
+    </div>
+    <div class="card-body"><%= render 'form', answer: @answer %></div>
+    <div class="card-footer">
+      <%= link_to t('.back'), admin_question_path(@answer.question), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

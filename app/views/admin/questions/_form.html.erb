@@ -1,17 +1,19 @@
-<h1>
-  <%= question_header(@quiz || @quiz_for_header, question) %>
-</h1>
+<div class="card-header">
+  <h1>
+    <%= question_header(@quiz || @quiz_for_header, question) %>
+  </h1>
+</div>
 
-<%= form_with model: [:admin, @quiz, question] do |form| %> 
-  <%= render 'shared/errors', resource: question %>
-  <p>
-    <%= form.label :body %> 
-    <br>
-    <%= form.text_area :body, cols: 30, rows: 10 %>
-  </p>
+<div class="card-body">
+  <%= form_with model: [:admin, @quiz, question] do |form| %> 
+    <%= render 'shared/errors', resource: question %>
+    <div class="mb-3">
+      <%= form.label :body, class: 'form-label' %> 
+      <%= form.text_area :body, cols: 30, rows: 10, class: 'form-control' %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-<br />
+    <div class="float-end">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

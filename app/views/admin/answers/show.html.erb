@@ -1,9 +1,9 @@
-<h1><%= t('header') %></h1>
+<h1><%= t('.header') %></h1>
 <p>
   <%= @answer.question.body %>
 </p>
 <p>
-  <b><%= t('subheader') %></b>
+  <b><%= t('.subheader') %></b>
   <%= @answer.body %>
 </p>
 <%= link_to t('edit'), edit_admin_answer_path(@answer) %> |

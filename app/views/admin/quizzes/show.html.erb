@@ -2,7 +2,7 @@
   <strong><%= t('.quiz') %>:</strong>
   <%= @quiz.title %>
 </p>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th><%= t('.questions') %></th>
@@ -11,9 +11,6 @@
   </thead>
 
   <tbody>
-    <%# @quiz.questions.each do |question| %>
-      <%#= render question %>
-    <%# end %>
     <%= render @quiz.questions %>
   </tbody>
 </table>
