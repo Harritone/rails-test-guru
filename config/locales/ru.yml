@@ -59,6 +59,8 @@ ru:
       gist:
         visit: 'Посетить'
     quizzes:
+      form_inline:
+        submit: 'Сохранить'
       create:
         success: 'Тест успешно создан.'
       index:

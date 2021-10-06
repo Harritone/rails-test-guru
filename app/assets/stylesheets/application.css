@@ -16,9 +16,15 @@
 main {
   min-height: 90vh;
 }
+
 #footer {
   height: 10vh;
 }
+
 .sort-by-title {
   cursor: pointer;
+}
+
+.progress {
+  height: 2rem !important;
 }

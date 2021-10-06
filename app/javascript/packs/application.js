@@ -12,6 +12,8 @@ import 'channels';
 import '@fortawesome/fontawesome-free/css/all';
 import '../utils/sorting';
 import '../utils/passwordCheck';
+import '../utils/formInline';
+import '../utils/progressBar';
 
 Rails.start();
 Turbolinks.start();

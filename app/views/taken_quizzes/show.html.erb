@@ -5,6 +5,7 @@
   <div class="card-title">
     <h3 class="mx-2">
       <%= t('question') %> <%= @taken_quiz.amount_questions_passed %>/<%= @taken_quiz.quiz.questions_count %>
+      <%= render 'shared/progress_bar', resource: @taken_quiz %>
     </h3>
   </div>
   <div class="card-body">
