@@ -65,6 +65,8 @@ en:
       gist:
         visit: 'Visit'
     quizzes:
+      form_inline:
+        submit: 'Submit'
       quiz:
         category: 'Category'
         level: 'level'

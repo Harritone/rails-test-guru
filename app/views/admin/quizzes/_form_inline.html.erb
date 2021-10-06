@@ -1,0 +1,12 @@
+<%= form_with model: [:admin, quiz], 
+              url: update_inline_admin_quiz_path(quiz),
+              data: { quiz_id: quiz.id },
+              local: true,
+              class: 'form-inline row d-none' do |f| %>
+  <div class="col-auto">
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="col-auto">
+    <%= f.submit t('.submit'), class: 'btn btn-primary' %>
+  </div>
+<% end %>
