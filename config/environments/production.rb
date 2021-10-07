@@ -69,7 +69,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.yandex.ru",
     port: 465,
     user_name: Rails.application.credentials.dig(:mailer, :user_name),
     password: Rails.application.credentials.dig(:mailer, :password),
