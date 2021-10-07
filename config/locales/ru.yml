@@ -53,11 +53,17 @@ ru:
         few: '%{count} ошибки не дают сохранить %{source}'
         many: '%{count} ошибок не дают сохранить %{source}'
         other: '%{count} ошибки не дают сохранить %{source}'
+    feedback_modal:
+      close: 'Закрыть'
+      submit: 'Отправить'
+      modal_header: 'Обратная связь'
+      message: 'Сообщение'
     header:
       signin: 'Войти'
       signup: 'Зарегестрироваться'
       logout: 'Выйти'
       admin: 'Панель Администратора'
+      feedback: ' Обратная связь'
   admin:
     nav:
       welcome_html: 'Привет, <b class="nav-admin user-email">%{username}</b>, Гуру.'

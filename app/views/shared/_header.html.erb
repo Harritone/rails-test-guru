@@ -28,7 +28,7 @@
             </li>
           <% end %>
           <li class="navbar-item">
-            <%= link_to 'feedback', '', class: 'nav-link', data: {bs_toggle: "modal", bs_target: '#exampleModal'} %>
+            <%= link_to t('.feedback'), '', class: 'nav-link', data: {bs_toggle: "modal", bs_target: '#exampleModal'} %>
           </li>
           <li class="navbar-item">
             <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
