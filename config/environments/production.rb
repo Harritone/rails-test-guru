@@ -64,17 +64,17 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://quiz-guru-app.herokuapp.com/', protocol: 'https' }
 
   # config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    user_name: Rails.application.credentials.dig(:mailer, :user_name),
-    password: Rails.application.credentials.dig(:mailer, :password),
-    authentication: :plain,
-    enable_starttls_auto: true
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => Rails.application.credentials.dig(:mailer, :user_name),
+    :password             => Rails.application.credentials.dig(:mailer, :password),
+    :authentication       => "plain",
+    :enable_starttls_auto => true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
