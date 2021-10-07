@@ -61,7 +61,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "test_guru_production"
-  config.action_mailer.default_url_options = { host: 'smtp.yandex.ru', from: 'kh-niloff@yandex.ru' }
+  config.action_mailer.default_url_options = { host: 'quiz-guru-app.herokuapp.com' }
 
   config.action_mailer.perform_deliveries = true
   # config.action_mailer.raise_delivery_errors = true
