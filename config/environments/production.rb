@@ -73,7 +73,7 @@ Rails.application.configure do
     port: 587,
     user_name: Rails.application.credentials.dig(:mailer, :user_name),
     password: Rails.application.credentials.dig(:mailer, :password),
-    authentication: "plain",
+    authentication: :plain,
     enable_starttls_auto: true
   }
 
