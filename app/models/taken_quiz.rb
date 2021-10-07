@@ -18,7 +18,7 @@ class TakenQuiz < ApplicationRecord
   end
 
   def success_percentage
-    (100.0 / quiz.questions_count * correct_questions).to_i
+    (100.0 / quiz.questions_count * correct_questions).to_i 
   end
 
   def passage_percentage
@@ -30,7 +30,7 @@ class TakenQuiz < ApplicationRecord
   end
 
   def amount_questions_passed
-    quiz.questions.where('id <= ?', current_question.id).count
+    quiz.questions.where('id < ?', current_question.id).count
   end
 
   private

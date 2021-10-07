@@ -18,4 +18,8 @@ class Quiz < ApplicationRecord
   def self.titles_by_category(category_title)
     by_category_title(category_title).pluck(:title)
   end
+
+  def has_questions?
+    self.questions_count.positive?
+  end
 end

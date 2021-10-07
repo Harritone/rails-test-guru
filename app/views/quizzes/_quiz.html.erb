@@ -1,9 +1,11 @@
-<tr>
-  <td><%= quiz.category.title %></td>
-  <td><%= quiz.title %></td>
-  <td><%= quiz.level %></td>
-  <td><%= quiz.questions_count %></td>
-  <td>
-    <%= link_to t('.start'), start_quiz_path(quiz), class: 'btn btn-sm btn-success', method: :post %>
-  </td>
-</tr>
+<% if quiz.has_questions? %>
+  <tr>
+    <td><%= quiz.category.title %></td>
+    <td><%= quiz.title %></td>
+    <td><%= quiz.level %></td>
+    <td><%= quiz.questions_count %></td>
+    <td>
+      <%= link_to t('.start'), start_quiz_path(quiz),  class: "btn btn-sm btn-success", method: :post %>
+    </td>
+  </tr>
+<% end %>
