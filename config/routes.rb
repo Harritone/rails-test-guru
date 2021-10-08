@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'quizzes#index'
+  post 'send_feedback', to: 'feedbacks#send_feedback'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 

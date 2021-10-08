@@ -21,7 +21,7 @@ module ApplicationHelper
     flash.each do |msg_type, message|
       next if msg_type == :form_error
       concat(content_tag(:div, message.html_safe, {
-        class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade show"}) do
+        class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade show text-center"}) do
         concat content_tag(:button, '', class: "btn-close", data: {
           "bs-dismiss": 'alert'
           })

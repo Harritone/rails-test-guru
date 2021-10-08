@@ -1,11 +1,11 @@
 # Please don't make me make up quizzes and questions) It's very hard for me( and takes a tremendous amount of time(
 ActiveRecord::Base.transaction do
-  TakenQuiz.destroy_all
-  User.destroy_all
-  Answer.destroy_all
-  Question.destroy_all
-  Quiz.destroy_all
-  Category.destroy_all
+  # TakenQuiz.destroy_all
+  # User.destroy_all
+  # Answer.destroy_all
+  # Question.destroy_all
+  # Quiz.destroy_all
+  # Category.destroy_all
 
   categories = %w[English Welsh American]
   quiz_titles = %w[Grammar Phonetic Listening]
@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
   answers = []
 
   3.times do
-    user = User.new(email: Faker::Internet.email)
+    user = User.new(email: Faker::Internet.email, password: '123123')
     user.save!
     users << user
   end

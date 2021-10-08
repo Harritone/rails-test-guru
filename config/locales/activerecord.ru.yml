@@ -28,5 +28,10 @@ ru:
         last_name: 'Фамилия'
 
     errors:
+      models:
+        answer: 'Ответ'
       messages: 
         blank: 'не может быть пустым'
+        greater_than_or_equal_to: 'не может быть меньше 0'
+        answers_cnt: 'Нельзя публиковать больше 4 ответов на один вопрос'
+

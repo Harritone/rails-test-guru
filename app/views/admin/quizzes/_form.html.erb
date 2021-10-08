@@ -1,25 +1,22 @@
-<%= form_with model: [:admin, quiz] do |form| %> 
-  <%= render 'shared/errors', resource: quiz %>
-  <p>
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, @categories, :id, :title, prompt: true %>
-  </p>
-  <p>
-    <%= form.label :title %> 
-    <br>
-    <%= form.text_field :title, id: :quiz_title %>
-  </p>
-  <br />
+    <%= form_with model: [:admin, quiz] do |form| %> 
+      <%= render 'shared/errors', resource: quiz %>
+      <div class="mb-3">
+        <%= form.label :category_id, class: 'form-label' %>
+        <%= form.collection_select :category_id, @categories, :id, :title,{}, {class: 'form-select', prompt: true} %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :title, class: 'form-label' %> 
+        <br>
+        <%= form.text_field :title, id: :quiz_title, class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :level, class: 'form-label' %> 
+        <%= form.number_field :level, id: :quiz_level, class: 'form-control' %>
+      </div>
+      <br />
 
-  <p>
-    <%= form.label :level %> 
-    <br>
-    <%= form.text_field :level, id: :quiz_level %>
-  </p>
-  <br />
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-<br />
+      <div class="float-end">
+        <%= form.submit class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <br />

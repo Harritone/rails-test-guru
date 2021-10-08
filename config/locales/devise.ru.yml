@@ -1,5 +1,9 @@
 ru:
   devise:
+    shared:
+      links:
+        did_not_recieve_link: 'Не получили подтверждающую ссылку?'
+        forgot: 'Забыли пароль?'
     confirmations:
       new:
         resend_confirmation: 'Повторно отправить подтверждение'
@@ -67,7 +71,9 @@ ru:
       new:
         greeting: 'Вход на TestGuru'
         enter: 'Войти в ворота Гуру'
-        login: 'Воойти в Ворота'
+        login: 'Войти в Ворота'
+      create:
+        welcome: 'Добро пожаловать, %{username}!'
     unlocks:
       new:
         header: 'Разблокировка учетной записи'

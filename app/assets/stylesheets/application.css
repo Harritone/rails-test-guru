@@ -14,11 +14,11 @@
  *= require_self
  */
 main {
-  min-height: 90vh;
+  min-height: 90vh !important;
 }
 
 #footer {
-  height: 10vh;
+  height: 10vh !important;
 }
 
 .sort-by-title {

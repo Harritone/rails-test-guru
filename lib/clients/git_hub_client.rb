@@ -1,6 +1,6 @@
 class GitHubClient
   ROOT_ENDPOINT = 'https://api.github.com'.freeze
-  ACCESS_TOKEN = ENV['GITHUB_TOKEN']
+  ACCESS_TOKEN = Rails.application.credentials.dig(:github, :token)
 
   def initialize
     @http_client = setup_http_client

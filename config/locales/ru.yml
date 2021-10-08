@@ -10,6 +10,9 @@ ru:
       question:
         create: "Добавить Вопрос"
         update: "Обновить Вопрос" 
+      answer:
+        create: "Добавить Ответ"
+        update: "Обновить Ответ" 
     label: 
       quiz:
         title: 'Название'
@@ -20,9 +23,19 @@ ru:
       answer:
         body: 'Текст ответа'
         correct: 'Правильный ответ'
+      user:
+        remember_me: 'Запомнить меня'
+        password_confirmation: 'Подтверждение пароля'
   quizzes:
     index: 
       header: 'Доступные Тесты'
+      category: 'Категория'
+      title: 'Название'
+      level: 'Уровень'
+      questions_count: 'Количество вопросов'
+      actions: 'Начать!'
+    quiz: 
+      start: 'Старт!'
   taken_quizzes:
     show:
       header: 'Прохождение %{title} теста'
@@ -40,11 +53,17 @@ ru:
         few: '%{count} ошибки не дают сохранить %{source}'
         many: '%{count} ошибок не дают сохранить %{source}'
         other: '%{count} ошибки не дают сохранить %{source}'
+    feedback_modal:
+      close: 'Закрыть'
+      submit: 'Отправить'
+      modal_header: 'Обратная связь'
+      message: 'Сообщение'
     header:
       signin: 'Войти'
       signup: 'Зарегестрироваться'
       logout: 'Выйти'
       admin: 'Панель Администратора'
+      feedback: ' Обратная связь'
   admin:
     nav:
       welcome_html: 'Привет, <b class="nav-admin user-email">%{username}</b>, Гуру.'
@@ -68,6 +87,7 @@ ru:
         add: 'Добавить Тест'
         category: 'Кетегория'
         level: 'Уровень'
+        title: 'Название'
         questions_count: 'Количество вопросов'
         actions: 'Действия'
       new:
@@ -103,6 +123,7 @@ ru:
       edit:
         edit: 'Редактирование'
       show:
+        answers: 'Ответы:'
     question: 'вопрос'
     answers:
       create:
@@ -111,11 +132,10 @@ ru:
         success: 'Ответ был успешно обновлён'
       destroy:
         success: 'Ответ был удалён'
-      answer:
-        edit: 
-          edit: 'Редактирование ответа'
-        new:
-          new: 'Создание ответа'
+      edit: 
+        header: 'Редактирование ответа для вопроса: %{question}'
+      new:
+        header: 'Создание ответа для вопроса: %{question}'
       show: 
         header: 'Вопрос'
         subheader: 'Ответ'

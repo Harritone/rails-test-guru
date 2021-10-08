@@ -9,13 +9,15 @@ document.addEventListener('turbolinks:load', function () {
       '.password-confirmation-error',
     );
 
-    passwordConfirmationInput.addEventListener('input', function () {
-      const passwordInput = document.getElementById('user_password');
-      if (this.value === passwordInput.value || this.value == '') {
-        passwordErrorElement.classList.remove('d-block');
-      } else {
-        passwordErrorElement.classList.add('d-block');
-      }
-    });
+    if (passwordConfirmationInput) {
+      passwordConfirmationInput.addEventListener('input', function () {
+        const passwordInput = document.getElementById('user_password');
+        if (this.value === passwordInput.value || this.value == '') {
+          passwordErrorElement.classList.remove('d-block');
+        } else {
+          passwordErrorElement.classList.add('d-block');
+        }
+      });
+    }
   }
 });

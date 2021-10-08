@@ -36,12 +36,12 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
             <div class="invalid-feedback password-confirmation-error"><%= t('.passwords_match') %></div>
           </div>
-      </div>
-      <div class="card-footer">
-        <div class="mb-3">
+        <div class="float-end">
           <%= f.submit t('.become'), class: 'btn btn-success' %>
         </div>
       <% end %>
+      </div>
+      <div class="card-footer">
 
       <%= render "devise/shared/links" %>
       </div>

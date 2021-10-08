@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2021_10_03_082609) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
-    t.integer "question_id", null: false
+    t.bigint "question_id", null: false
     t.boolean "correct", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 2021_10_03_082609) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_10_03_082609) do
 
   create_table "questions", force: :cascade do |t|
     t.string "body", null: false
-    t.integer "quiz_id", null: false
+    t.bigint "quiz_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quiz_id"], name: "index_questions_on_quiz_id"
@@ -48,10 +51,10 @@ ActiveRecord::Schema.define(version: 2021_10_03_082609) do
   create_table "quizzes", force: :cascade do |t|
     t.string "title", null: false
     t.integer "level", default: 0
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "creator_id"
+    t.bigint "creator_id"
     t.integer "questions_count", default: 0, null: false
     t.index ["category_id"], name: "index_quizzes_on_category_id"
     t.index ["creator_id"], name: "index_quizzes_on_creator_id"
@@ -59,11 +62,11 @@ ActiveRecord::Schema.define(version: 2021_10_03_082609) do
   end
 
   create_table "taken_quizzes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "quiz_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "current_question_id"
+    t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
     t.index ["current_question_id"], name: "index_taken_quizzes_on_current_question_id"
     t.index ["quiz_id"], name: "index_taken_quizzes_on_quiz_id"

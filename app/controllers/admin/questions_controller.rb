@@ -15,6 +15,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def update
+    @quiz_for_header = @question.quiz
     if @question.update(question_params)
       redirect_to admin_quiz_path(@question.quiz), notice: t('.success')
     else
@@ -25,7 +26,7 @@ class Admin::QuestionsController < Admin::BaseController
   def create
     @question = @quiz.questions.build(question_params)
     if @question.save
-      redirect_to quiz_path(@quiz), notice: t('.success')
+      redirect_to admin_quiz_path(@quiz), notice: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
