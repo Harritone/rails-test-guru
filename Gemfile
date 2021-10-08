@@ -15,6 +15,7 @@ gem 'devise', '~> 4.8'
 gem 'faraday'
 gem "octokit", "~> 4.0"
 gem 'faker', '~> 2.19'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
