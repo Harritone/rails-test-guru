@@ -11,6 +11,16 @@
       <%= form.label :body, class: 'form-label' %> 
       <%= form.text_area :body, cols: 30, rows: 10, class: 'form-control' %>
     </div>
+    <h3><%= t('.answers') %></h3>
+
+    <div class="my-2">
+      <div class="fields"> 
+        <%= form.fields_for :answers do |answer_form| %>
+          <%= render 'answer_fields', f: answer_form %>
+        <% end %>
+      </div>
+      <%= link_to_add_association t('.add_answer'), form, :answers, class: 'btn btn-sm btn-outline-success' %>
+    </div>
 
     <div class="float-end">
       <%= form.submit class: 'btn btn-primary' %>

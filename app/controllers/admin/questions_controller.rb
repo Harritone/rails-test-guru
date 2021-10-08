@@ -8,10 +8,12 @@ class Admin::QuestionsController < Admin::BaseController
 
   def new
     @question = @quiz.questions.build
+    @question.answers.build
   end
 
   def edit
     @quiz_for_header = @question.quiz
+    @question.answers.build
   end
 
   def update
@@ -53,6 +55,6 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def question_params
-    params.require(:question).permit(:body)
+    params.require(:question).permit(:body, answers_attributes: [:id, :body, :correct, :_destroy])
   end
 end

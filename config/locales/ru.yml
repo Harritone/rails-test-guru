@@ -108,6 +108,11 @@ ru:
         edit: 'Редактировать Тест'
         add: 'Добавить вопрос'
     questions:
+      form:
+        answers: 'Ответы'
+      answer_fields:
+        remove_answer: 'Убрать Вопрос'
+        add_answer: 'Добавить Вопрос'
       create:
         success: 'Вопрос был успешно создан'
       update:

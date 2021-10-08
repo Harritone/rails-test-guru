@@ -1,0 +1,12 @@
+<div class="nested-fields">
+  <div class="field mb-3">
+    <%= f.label :body, class: 'form-label' %>
+    <%= f.text_area :body, id: :answer_body, rows: 7, cols: 60, class: 'form-control' %>
+  </div>
+
+  <div class="field form-check">
+    <%= f.label :correct, class: 'form-check-label' %>
+    <%= f.check_box :correct, id: :answer_correct, class: 'form-check-input' %>
+  </div>
+  <%= link_to_remove_association t('.remove_answer'), f, class: 'btn btn-sm btn-outline-danger mb-2' %>
+</div>
