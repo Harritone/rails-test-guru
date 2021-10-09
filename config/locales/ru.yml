@@ -110,9 +110,9 @@ ru:
     questions:
       form:
         answers: 'Ответы'
+        add_answer: 'Добавить Ответ'
       answer_fields:
-        remove_answer: 'Убрать Вопрос'
-        add_answer: 'Добавить Вопрос'
+        remove_answer: 'Убрать Ответ'
       create:
         success: 'Вопрос был успешно создан'
       update:

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :taken_quizzes
   has_many :gists, dependent: :destroy
   has_many :quizzes, through: :taken_quizzes
+  has_many :users_badges, dependent: :destroy
+  has_many :badges, through: :users_badges
   has_many :created_quizzes, class_name: 'Quiz',
                              foreign_key: :creator_id,
                              dependent: :nullify
