@@ -1,0 +1,20 @@
+<%= form_with model: [:admin, badge] do |form| %> 
+  <%= render 'shared/errors', resource: badge %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %> 
+    <%= form.text_field :name, id: :badge_rule, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :image_url, class: 'form-label' %> 
+    <%= form.text_field :image_url, id: :badge_image_url, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :rule, class: 'form-label' %> 
+    <%= form.select :rule,  options_for_select(Badge.rules.keys.map {|rule| [rule.humanize, rule]}), {}, {class: 'form-select'} %>
+    <%# form.select :rule,  options_for_select(Badge.rules.keys), {}, {class: 'form-select'} %>
+  </div>
+  <div class="float-end">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<br />
