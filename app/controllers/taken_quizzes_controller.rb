@@ -7,6 +7,7 @@ class TakenQuizzesController < ApplicationController
   end
 
   def result
+    @badge = SetBadgeService.new(@taken_quiz).call if @taken_quiz.success?
   end
 
   def update

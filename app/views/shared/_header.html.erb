@@ -28,6 +28,9 @@
             </li>
           <% end %>
           <li class="navbar-item">
+            <%= link_to t('.my_badges'), my_badges_path, class: 'nav-link' %>
+          </li>
+          <li class="navbar-item">
             <%= link_to t('.feedback'), '', class: 'nav-link', data: {bs_toggle: "modal", bs_target: '#exampleModal'} %>
           </li>
           <li class="navbar-item">

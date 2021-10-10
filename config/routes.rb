@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   root to: 'quizzes#index'
   post 'send_feedback', to: 'feedbacks#send_feedback'
+  get 'my_badges', to: 'badges#my_badges'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
   resources :quizzes, only: :index do
-  #   resources :questions, shallow: true, except: :index do
-  #     resources :answers, shallow: true, except: :index
-  #   end
     member do
       post :start
     end
@@ -28,5 +26,6 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: :index
+    resources :badges, shallow: true, only: %i[index new create edit update destroy]
   end
 end

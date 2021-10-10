@@ -1,0 +1,19 @@
+<h2><%= t('.header') %></h2>
+
+<%= render 'shared/errors', resource: @quiz %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('.name') %></th>
+      <th scope="col"><%= t('.image') %></th>
+      <th scope="col"><%= t('.rule') %></th>
+      <th scope="col"><%= t('.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @badges %>
+  </tbody>
+</table>
+<%= link_to t('.add'), new_admin_badge_path %>
+

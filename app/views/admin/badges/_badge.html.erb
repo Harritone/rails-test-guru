@@ -1,0 +1,10 @@
+<tr>
+  <td class="align-middle"><%= badge.name %></td>
+  <td class="align-middle"><%= image_tag badge.image_url, size: 50 %></td>
+  <td class="align-middle"><%= badge.rule.humanize %></td>
+  <td class="align-middle">
+    <%= link_to t('edit'), edit_admin_badge_path(badge)%> |
+    <%= link_to t('remove'), admin_badge_path(badge), method: :delete %>
+  </td>
+</tr>
+

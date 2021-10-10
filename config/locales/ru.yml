@@ -4,6 +4,9 @@ ru:
     select:
       prompt: 'Выберите категорию'
     submit:
+      badge:
+        create: 'Добавить Бэдж'
+        update: 'Обновить Бэдж'
       quiz:
         create: "Создать Тест"
         update: "Обновить Тест" 
@@ -14,6 +17,10 @@ ru:
         create: "Добавить Ответ"
         update: "Обновить Ответ" 
     label: 
+      badge:
+        name: 'Название'
+        rule: 'Правило'
+        image_url: 'Ссылка на изображение'
       quiz:
         title: 'Название'
         level: 'Уровень'
@@ -70,6 +77,25 @@ ru:
       logout: 'Выход'
       gists: 'Гисты'
       quizzes: 'Тесты'
+      badges: 'Бэджи'
+    badges:
+      index:
+        header: 'Бэджи'
+        name: 'Название'
+        image: 'Изображеие'
+        rule: 'Правило'
+        actions: 'Действия'
+        add: 'Добавить'
+      edit: 
+        header: 'Редактирование Бэджа'
+      new:
+        header: 'Добавление Бэджа'
+      create:
+        success: 'Бэдж добавлен'
+      update:
+        success: 'Бэдж обновлён'
+      destroy:
+        success: 'Бэдж удалён'
     gists: 
       index:
         question: 'Вопрос'
@@ -110,9 +136,9 @@ ru:
     questions:
       form:
         answers: 'Ответы'
+        add_answer: 'Добавить Ответ'
       answer_fields:
-        remove_answer: 'Убрать Вопрос'
-        add_answer: 'Добавить Вопрос'
+        remove_answer: 'Убрать Ответ'
       create:
         success: 'Вопрос был успешно создан'
       update:

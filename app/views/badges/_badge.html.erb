@@ -1,0 +1,22 @@
+<div class="col my-2">
+  <div class="card rounded" style="width: 15rem">
+    <%= image_tag badge.image_url, size: 200, class: 'card-img-top position-relative p-2' %>
+    <span
+      class="
+        position-absolute
+        top-0
+        start-100
+        translate-middle
+        badge
+        rounded-pill
+        bg-primary
+        fs-5
+      "
+    >
+      <%= badge.user_badges.find_by(badge: badge).quantity %>
+    </span>
+    <div class="card-body">
+      <h5 class="card-title text-center text-primary"><%= badge.name %></h5>
+    </div>
+  </div>
+</div>
