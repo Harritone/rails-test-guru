@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 2021_10_08_105026) do
     t.index ["user_id"], name: "index_taken_quizzes_on_user_id"
   end
 
+  create_table "user_badges", force: :cascade do |t|
+    t.integer "count", default: 1
+    t.bigint "user_id", null: false
+    t.bigint "badge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id"
+    t.index ["user_id"], name: "index_user_badges_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -107,16 +117,6 @@ ActiveRecord::Schema.define(version: 2021_10_08_105026) do
     t.index ["type"], name: "index_users_on_type"
   end
 
-  create_table "users_badges", force: :cascade do |t|
-    t.integer "count", default: 1
-    t.bigint "users_id", null: false
-    t.bigint "badges_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["badges_id"], name: "index_users_badges_on_badges_id"
-    t.index ["users_id"], name: "index_users_badges_on_users_id"
-  end
-
   add_foreign_key "answers", "questions"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
@@ -124,6 +124,6 @@ ActiveRecord::Schema.define(version: 2021_10_08_105026) do
   add_foreign_key "quizzes", "categories"
   add_foreign_key "taken_quizzes", "quizzes"
   add_foreign_key "taken_quizzes", "users"
-  add_foreign_key "users_badges", "badges", column: "badges_id"
-  add_foreign_key "users_badges", "users", column: "users_id"
+  add_foreign_key "user_badges", "badges"
+  add_foreign_key "user_badges", "users"
 end

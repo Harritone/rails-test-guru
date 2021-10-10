@@ -11,7 +11,6 @@
   <div class="mb-3">
     <%= form.label :rule, class: 'form-label' %> 
     <%= form.select :rule,  options_for_select(Badge.rules.keys.map {|rule| [rule.humanize, rule]}), {}, {class: 'form-select'} %>
-    <%# form.select :rule,  options_for_select(Badge.rules.keys), {}, {class: 'form-select'} %>
   </div>
   <div class="float-end">
     <%= form.submit class: 'btn btn-primary' %>
