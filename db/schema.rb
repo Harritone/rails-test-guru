@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_105026) do
+ActiveRecord::Schema.define(version: 2021_10_10_032059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,13 +76,14 @@ ActiveRecord::Schema.define(version: 2021_10_08_105026) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
+    t.boolean "success", default: false
     t.index ["current_question_id"], name: "index_taken_quizzes_on_current_question_id"
     t.index ["quiz_id"], name: "index_taken_quizzes_on_quiz_id"
     t.index ["user_id"], name: "index_taken_quizzes_on_user_id"
   end
 
   create_table "user_badges", force: :cascade do |t|
-    t.integer "count", default: 1
+    t.integer "quantity", default: 1
     t.bigint "user_id", null: false
     t.bigint "badge_id", null: false
     t.datetime "created_at", precision: 6, null: false

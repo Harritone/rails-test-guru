@@ -7,7 +7,11 @@ class TakenQuiz < ApplicationRecord
                                 foreign_key: :current_question_id
 
   before_validation :next_question
-  
+  before_save :set_success, unless: :new_record?
+
+  scope :by_category_for_user, ->(category, user) { includes(:user, quiz: [:category]).where(user: user, quiz: { category: category }) }
+  scope :by_level_for_user, ->(level, user) { includes(:user, :quiz).where(user: user, quiz: { level: level }) }
+
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
@@ -56,5 +60,9 @@ class TakenQuiz < ApplicationRecord
       else
         quiz.questions.order(:id).where('id > ?', current_question_id).first
       end
+  end
+
+  def set_success
+    self.success = self.success?
   end
 end

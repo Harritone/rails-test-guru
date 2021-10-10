@@ -13,7 +13,7 @@
         fs-5
       "
     >
-      <%= badge.user_badges.count %>
+      <%= badge.user_badges.find_by(badge: badge).quantity %>
     </span>
     <div class="card-body">
       <h5 class="card-title text-center text-primary"><%= badge.name %></h5>

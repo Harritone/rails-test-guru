@@ -1,5 +1,30 @@
 <h1><%= t('.header', title: @taken_quiz.quiz.title) %></h1>
 <h2><%= t('.result') %> <span class="<%= passage_percentage_class(@taken_quiz) %>"><%= @taken_quiz.success_percentage %>%</span></h2>
-<p>
+
+<br>
+<% if @badge %>
+  <div class="card rounded" style="width: 15rem">
+    <%= image_tag @badge.image_url, size: 200, class: 'card-img-top position-relative p-2' %>
+    <span
+      class="
+        position-absolute
+        top-0
+        start-100
+        translate-middle
+        badge
+        rounded-pill
+        bg-primary
+        fs-5
+      "
+    >
+      <%= @badge.user_badges.find_by(badge: @badge).quantity %>
+    </span>
+    <div class="card-body">
+      <h5 class="card-title text-center text-primary">You've earned a badge - <%= @badge.name %>!</h5>
+      <h5 class="card-title text-center text-primary"><%= t('.earn', badge: @badge) %></h5>
+    </div>
+  </div>
+<% end %>
+<p class="m-2">
   <%= link_to t('back'), quizzes_path %>
 </p>
