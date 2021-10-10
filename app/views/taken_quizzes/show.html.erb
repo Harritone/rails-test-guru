@@ -1,6 +1,9 @@
 <div class="card mb-3">
-  <div class="card-header text-center">
+  <div class="card-header">
     <h1><%= t('.header', title: @taken_quiz.quiz.title) %></h1>
+    <% if @taken_quiz.quiz.with_timer? %>
+      <div class="float-end" id="timer" data-duration="<%= @time_left %>"></div>
+    <% end %>
   </div>
   <div class="card-title">
     <h3 class="mx-2">

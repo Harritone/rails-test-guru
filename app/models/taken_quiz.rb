@@ -7,6 +7,18 @@ class TakenQuiz < ApplicationRecord
                                 foreign_key: :current_question_id
 
   before_validation :next_question
+
+  before_save :set_start_time, if: :new_record?
+
+  def time_left
+    return 10_000 unless self.quiz.with_timer?
+
+    ((self.quiz.duration * 60 * 1000) - (updated_at - time_start)) / 1000
+  end
+
+  def set_start_time
+    self.time_start = Time.now
+  end
   
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)

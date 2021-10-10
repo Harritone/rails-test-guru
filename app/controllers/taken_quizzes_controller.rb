@@ -3,7 +3,8 @@ class TakenQuizzesController < ApplicationController
   before_action :set_taken_quiz, only: %i[show result update gist]
 
   def show
-    redirect_to result_quiz_passage_path(@taken_quiz) if @taken_quiz.completed?
+    @time_left = @taken_quiz.time_left
+    redirect_to result_quiz_passage_path(@taken_quiz) if @taken_quiz.completed? || @taken_quiz.time_left <= 1000
   end
 
   def result
