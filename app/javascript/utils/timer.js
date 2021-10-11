@@ -4,6 +4,11 @@ document.addEventListener('turbolinks:load', function () {
     let seconds = timer.dataset.duration;
     setInterval(() => {
       seconds--;
+      if(seconds <= 1) {
+        const host = window.location.origin
+        const takenQuizId = window.location.pathname.replace('/quiz-passage/', '')
+        window.location.replace(`${host}/${takenQuizId}/result`)
+      }
       const date = new Date(0, 0, 0);
       date.setSeconds(seconds);
       const hours = date.getHours();
