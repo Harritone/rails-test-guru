@@ -1,5 +1,9 @@
 class TakenQuiz < ApplicationRecord
-  SUCCESS_PERSENTAGE = 85.freeze
+  SUCCESS_PERSENTAGE = 85
+  MILISECONDS_IN_A_SECOND = 1_000
+  REAL_BIG_TIME_PERIOD = 10_000
+  SECONDS_IN_A_MINUTE = 60
+
   belongs_to :user
   belongs_to :quiz
   belongs_to :current_question, class_name: 'Question',
@@ -8,18 +12,16 @@ class TakenQuiz < ApplicationRecord
 
   before_validation :next_question
 
-  before_save :set_start_time, if: :new_record?
-
   def time_left
-    return 10_000 unless self.quiz.with_timer?
+    return REAL_BIG_TIME_PERIOD unless self.quiz.with_timer?
 
-    ((self.quiz.duration * 60 * 1000) - (updated_at - time_start)) / 1000
+    ((self.quiz.duration * SECONDS_IN_A_MINUTE * MILISECONDS_IN_A_SECOND) - (updated_at - created_at)) / MILISECONDS_IN_A_SECOND
   end
 
-  def set_start_time
-    self.time_start = Time.now
+  def has_no_time_to_proceed?
+    self.time_left <= MILISECONDS_IN_A_SECOND
   end
-  
+
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
