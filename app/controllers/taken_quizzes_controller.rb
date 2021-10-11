@@ -3,7 +3,7 @@ class TakenQuizzesController < ApplicationController
   before_action :set_taken_quiz, only: %i[show result update gist]
 
   def show
-    redirect_to result_quiz_passage_path(@taken_quiz) if @taken_quiz.completed?
+    @time_left = @taken_quiz.time_left
   end
 
   def result
@@ -11,8 +11,8 @@ class TakenQuizzesController < ApplicationController
 
   def update
     @taken_quiz.accept!(params[:answer_ids])
-    if @taken_quiz.completed?
-      QuizMailer.completed_quiz(@taken_quiz).deliver_now
+    if @taken_quiz.completed? || @taken_quiz.has_no_time_to_proceed?
+      QuizMailer.completed_quiz(@taken_quiz).deliver_now if @taken_quiz.completed?
       redirect_to result_quiz_passage_path(@taken_quiz)
     else
       render :show

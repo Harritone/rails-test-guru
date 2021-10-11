@@ -10,12 +10,12 @@ import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap/dist/css/bootstrap';
 import 'channels';
 import '@fortawesome/fontawesome-free/css/all';
-import "@nathanvda/cocoon"
+import '@nathanvda/cocoon';
 import '../utils/sorting';
 import '../utils/passwordCheck';
 import '../utils/formInline';
 import '../utils/progressBar';
-// require("@nathanvda/cocoon")
+import '../utils/timer';
 
 Rails.start();
 Turbolinks.start();

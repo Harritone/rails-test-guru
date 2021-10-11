@@ -19,6 +19,10 @@ class Quiz < ApplicationRecord
     by_category_title(category_title).pluck(:title)
   end
 
+  def with_timer?
+    self.duration > 0
+  end
+
   def has_questions?
     self.questions_count.positive?
   end
