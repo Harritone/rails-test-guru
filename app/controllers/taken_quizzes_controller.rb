@@ -4,7 +4,6 @@ class TakenQuizzesController < ApplicationController
 
   def show
     @time_left = @taken_quiz.time_left
-    redirect_to result_quiz_passage_path(@taken_quiz) if @taken_quiz.completed? || @taken_quiz.time_left <= 1000
   end
 
   def result
@@ -12,8 +11,8 @@ class TakenQuizzesController < ApplicationController
 
   def update
     @taken_quiz.accept!(params[:answer_ids])
-    if @taken_quiz.completed?
-      QuizMailer.completed_quiz(@taken_quiz).deliver_now
+    if @taken_quiz.completed? || @taken_quiz.has_no_time_to_proceed?
+      QuizMailer.completed_quiz(@taken_quiz).deliver_now if @taken_quiz.completed?
       redirect_to result_quiz_passage_path(@taken_quiz)
     else
       render :show
